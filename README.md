@@ -1,14 +1,14 @@
-# NatureClickr
+# NatureClikr
 
-NatureClickr is a website for users to upload and browse photos about nature. It is inspired by [Flickr](https://www.flickr.com/).
+NatureClikr is a website for users to upload and browse photos about nature. It is inspired by [Flickr](https://www.flickr.com/).
 
 Try at the live site: [LINK]
 
 # Index
 
 |
-[MVP Feature List](https://github.com/xwnnie/NatureClickr/wiki/Feature-List) |
-[Database Schema](https://github.com/xwnnie/NatureClickr/wiki/Database-Schema) |
+[MVP Feature List](https://github.com/xwnnie/NatureClikr/wiki/Feature-List) |
+[Database Schema](https://github.com/xwnnie/NatureClikr/wiki/Database-Schema) |
 
 # Technologies Used
 
@@ -18,7 +18,7 @@ Try at the live site: [LINK]
 
 1. Clone this repository
 
-   `git clone git@github.com:xwnnie/NatureClickr.git`
+   `git clone git@github.com:xwnnie/NatureClikr.git`
 
 2. Install dependencies
 
@@ -43,7 +43,7 @@ Try at the live site: [LINK]
 
 ### Features
 
-NatureClickr is a website for users to upload and browse photos about nature. Logged in users can dynamically create, edit and delete photos and comments without redirecting.
+NatureClikr is a website for users to upload and browse photos about nature. Logged in users can dynamically create, edit and delete photos and comments without redirecting.
 
 Logged out users can:
 

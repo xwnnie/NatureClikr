@@ -1,0 +1,11 @@
+.center-text {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.center-text button {
+    width: fit-content;
+    font-size: 20px;
+    padding: 10px;
+}

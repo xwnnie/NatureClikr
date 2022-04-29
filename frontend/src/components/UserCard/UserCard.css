@@ -1,0 +1,23 @@
+.usercard {
+    height: 200px;
+    background-image: url("../../images/usercard2.jpg");
+    background-size: cover;
+    color: white;
+}
+
+.usercard-text {
+    width: 80%;
+    padding-top: 80px;
+    padding-left: 40px;
+    font-weight: 300
+}
+
+#usercard-username {
+    font-size: 36px;
+    font-weight: 300;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+}

@@ -30,7 +30,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu} id="nav-logout-link">
         <i class="fa-solid fa-user-astronaut" />
       </button>
       {showMenu && (

@@ -1,0 +1,108 @@
+.navbar {
+    display: flex;
+    /* justify-content: space-between; */
+    height: 45px;
+    /* margin-bottom: 5px; */
+    padding-left: 30px;
+    padding-right: 30px;
+    /* position: absolute; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 5px;
+    z-index: 1;
+}
+
+.navbar a {
+    text-decoration: none;
+    padding: 10px 10px;
+    color: white;
+    font-size: 16px;
+}
+
+
+.navbar {
+    background-color: #012020;
+}
+
+.navbar-logo {
+    color: white;
+    padding-top: 10px;
+    /* padding-left: 50px; */
+}
+
+/* login signup */
+#nav-signup-btn, #nav-login-btn, #nav-logout-link {
+    background-color: transparent;
+    color: white;
+    height: 15px;
+    border: none;
+    padding-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#explore-link {
+    position: absolute;
+    left: 15%
+}
+
+#nav-you-link {
+    position: absolute;
+    left: 25%
+}
+
+#nav-search input {
+    border: none;
+    /* height: 15px; */
+    /* min-width: 90%; */
+    background-color: #f3f5f6;
+    margin-top: 0px;
+    /* width: 90%; */
+}
+
+#nav-search {
+    position: absolute;
+    left: 35%;
+    border: none;
+    border-radius: 2px;
+    min-width: 35%;
+    height: 23px; 
+    background-color: #f3f5f6;
+    margin-top: 6px;
+    padding-bottom: 6px;
+}
+
+
+#nav-search button {
+    background-color: #f3f5f6;
+    border: none;
+    height: 19px;
+    cursor: pointer;
+    border-left: 1px solid grey;
+    margin-top: 5px;
+    position: absolute;
+    right: 1%
+    /* max-width: 15px; */
+    /* z-index: 0; */
+}
+
+#nav-login-btn{
+    position: absolute;
+    right: 20%
+}
+
+#nav-upload-link {
+    position: absolute;
+    right: 17%
+}
+
+#nav-signup-btn {
+    position: absolute;
+    right: 10%
+}
+
+#nav-logout-link {
+    position: absolute;
+    right: 8%
+}

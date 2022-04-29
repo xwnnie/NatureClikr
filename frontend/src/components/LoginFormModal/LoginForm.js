@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { GiMountainCave } from "react-icons/gi";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+
+// css: SignupForm.css
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -20,7 +23,13 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="auth-form">
+      <div>
+        <div>
+          <GiMountainCave />
+        </div>
+        <h3>Log in to NatureClikr</h3>
+      </div>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -44,7 +53,9 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit" className="">
+        Log In
+      </button>
     </form>
   );
 }

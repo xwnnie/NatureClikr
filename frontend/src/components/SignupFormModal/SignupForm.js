@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { GiMountainCave } from "react-icons/gi";
 import * as sessionActions from "../../store/session";
+import "./SignupForm.css";
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -31,7 +33,11 @@ function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="auth-form">
+      <div>
+        <div><GiMountainCave /></div>
+        <h3>Sign up for NatureClikr</h3>
+      </div>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -73,7 +79,9 @@ function SignupForm() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button type="submit" className="">
+        Sign Up
+      </button>
     </form>
   );
 }

@@ -56,6 +56,9 @@ function LoginForm() {
       <button type="submit" className="">
         Log In
       </button>
+      <button className="">
+        Demo User
+      </button>
     </form>
   );
 }

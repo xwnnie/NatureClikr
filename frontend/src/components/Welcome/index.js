@@ -2,7 +2,6 @@ import "./Welcome.css";
 
 const Welcome = () => {
     return (
-      <div>
         <div className="center-text">
             <h1>Find your inner peace.</h1>
             <p>
@@ -11,7 +10,6 @@ const Welcome = () => {
             <button>Start for free</button>            
         </div>
 
-      </div>
     );
 }
 

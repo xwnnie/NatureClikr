@@ -49,8 +49,7 @@ Logged in users can:
 - View All Photos and photo details
 - Add/View/Edit/Delete their own Photos
 - Add/View/Delete their Favorite photos
-- Add tags to their own Photos
-- Search for Photos by name and tags
+- Search for Photos by name
 
 ### Home Page
 

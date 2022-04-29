@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Fave.associate = function(models) {
     // associations can be defined here
+      Fave.belongsTo(models.User, { foreignKey: "userId" });
+      Fave.belongsTo(models.Photo, { foreignKey: "photoId" });
   };
   return Fave;
 };

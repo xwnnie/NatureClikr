@@ -1,13 +1,9 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import photos from "../../data/photos-raw.js";
 import "./PhotoDetail.css";
-import {
-  FaArrowLeft,
-  FaRegStar,
-  FaAngleRight,
-  FaAngleLeft,
-} from "react-icons/fa";
-import { useEffect, useState } from "react";
+
+
 
 const PhotoDetail = () => {
   const { photoId } = useParams();
@@ -28,7 +24,7 @@ const PhotoDetail = () => {
     <div className="main-container ">
       <div className="photo-detail-card">
         <Link to="/" className="back-link">
-          <FaArrowLeft style={{ fontSize: "12px" }} /> BACK
+          <i class="fa-solid fa-arrow-left" style={{ fontSize: "12px" }} /> BACK
         </Link>
         <input
           className="star"
@@ -46,7 +42,6 @@ const PhotoDetail = () => {
               parseInt(photoId) - 1 > 0 ? "left-right-arrows" : "hidden"
             }
           >
-            {/* <FaAngleLeft className="left-right-arrows" /> */}
             {/* <span>&lt;</span> */}
             <i class="fa-solid fa-chevron-left"></i>
           </Link>
@@ -59,7 +54,6 @@ const PhotoDetail = () => {
                 : "hidden"
             }
           >
-            {/* <FaAngleRight className="left-right-arrows" /> */}
             {/* <span>&gt;</span> */}
             <i class="fa-solid fa-chevron-right"></i>
           </Link>
@@ -72,6 +66,7 @@ const PhotoDetail = () => {
           <h3 className="">{photo.name}</h3>
           <p className="">author</p>
           <p className="">date</p>
+          <p className="">location</p>
           <p className="">description</p>
         </div>
       </div>

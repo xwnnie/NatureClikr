@@ -18,6 +18,18 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      displayName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [3, 30],
+          isNotEmail(value) {
+            if (Validator.isEmail(value)) {
+              throw new Error("Cannot be an email.");
+            }
+          },
+        },
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -51,7 +63,13 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Photo, { foreignKey: "userId" });
+    const columnMapping = {
+        through: 'Fave', 
+        otherKey: 'photoId',
+        foreignKey: 'userId'
+    }
+    User.belongsToMany(models.Photo, columnMapping);
   };
 
   User.prototype.toSafeObject = function () {
@@ -83,10 +101,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, displayName, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
+      displayName,
       email,
       hashedPassword,
     });

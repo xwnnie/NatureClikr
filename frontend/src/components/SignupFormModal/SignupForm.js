@@ -10,6 +10,7 @@ function SignupForm() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -21,7 +22,7 @@ function SignupForm() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signup({ email, username, password })
+        sessionActions.signup({ email, username, displayName, password })
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -35,7 +36,9 @@ function SignupForm() {
   return (
     <form onSubmit={handleSubmit} className="auth-form">
       <div>
-        <div><GiMountainCave /></div>
+        <div>
+          <GiMountainCave />
+        </div>
         <h3>Sign up for NatureClikr</h3>
       </div>
       <ul>
@@ -58,6 +61,15 @@ function SignupForm() {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Display Name
+        <input
+          type="text"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
           required
         />
       </label>

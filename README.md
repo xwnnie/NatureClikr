@@ -2,7 +2,7 @@
 
 NatureClikr is a website for users to upload and browse photos about nature. It is inspired by [Flickr](https://www.flickr.com/).
 
-Try at the live site: [LINK]
+Try at the live site: [NatureClikr](https://nature-clikr.herokuapp.com/)
 
 # Index
 
@@ -12,7 +12,7 @@ Try at the live site: [LINK]
 
 # Technologies Used
 
-<img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" height=50/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/><img 
+<img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" height=50/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/>
 
 # Getting started
 
@@ -45,17 +45,12 @@ Try at the live site: [LINK]
 
 NatureClikr is a website for users to upload and browse photos about nature. Logged in users can dynamically create, edit and delete photos, and add and remove favorite photos without redirecting.
 
-Logged out users can:
-
-- View Photos and photo details
-- Search for Photos
-- View user profiles
-
 Logged in users can:
-
-- Add/Edit/Delete Photos
-- Add/Delete Favorite photos
-- Search for Photos
+- View All Photos and photo details
+- Add/View/Edit/Delete their own Photos
+- Add/View/Delete their Favorite photos
+- Add tags to their own Photos
+- Search for Photos by name and tags
 
 ### Home Page
 

@@ -29,9 +29,6 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      tagId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

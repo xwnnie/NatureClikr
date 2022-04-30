@@ -4,7 +4,7 @@ const { check } = require("express-validator");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { handleValidationErrors } = require("../../utils/validation");
-const { User } = require("../../db/models");
+const { User, Photo, Fave } = require("../../db/models");
 const { Router } = require("express");
 
 const router = express.Router();
@@ -51,12 +51,15 @@ router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const userId = parseInt(req.params.id, 10);
-    
-    const user = await User.findByPk(1);
+
+    const user = await User.findByPk(userId, {
+      include: [Photo, {model: Fave, include: Photo}]
+    });
 
     return res.json({
-      user,
+      user
     });
   })
 );
+
 module.exports = router;

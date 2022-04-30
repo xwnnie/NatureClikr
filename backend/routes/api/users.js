@@ -5,8 +5,10 @@ const { check } = require("express-validator");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { handleValidationErrors } = require("../../utils/validation");
 const { User } = require("../../db/models");
+const { Router } = require("express");
 
 const router = express.Router();
+
 
 const validateSignup = [
   check("email")
@@ -19,10 +21,7 @@ const validateSignup = [
     .withMessage("Please provide a username with at least 4 characters."),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
   check("displayName")
-    .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage("Please provide a display name with at least 4 characters."),
-  check("username").not().isEmail().withMessage("Username cannot be an email."),
+    .exists({ checkFalsy: true }),
   check("password")
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -35,8 +34,8 @@ router.post(
   '/',
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { email, password, username, displayName } = req.body;
-    const user = await User.signup({ email, username, password, displayName });
+    const { email, password, username, displayName, location } = req.body;
+    const user = await User.signup({ email, username, password, displayName, location });
 
     await setTokenCookie(res, user);
 
@@ -46,4 +45,18 @@ router.post(
   })
 );
 
+
+//get details of a user
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.id, 10);
+    
+    const user = await User.findByPk(1);
+
+    return res.json({
+      user,
+    });
+  })
+);
 module.exports = router;

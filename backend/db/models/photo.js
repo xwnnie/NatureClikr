@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
   Photo.associate = function(models) {
     // associations can be defined here
     Photo.belongsTo(models.User, { foreignKey: "userId" });
-    Photo.belongsTo(models.Tag, { foreignKey: "tagId" });
     const columnMapping = {
       through: 'Fave', 
       otherKey: 'userId',

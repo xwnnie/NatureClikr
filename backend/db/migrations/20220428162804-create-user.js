@@ -12,6 +12,9 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
+      location: {
+        type: Sequelize.STRING(30),
+      },
       username: {
         type: Sequelize.STRING(30),
         allowNull: false,

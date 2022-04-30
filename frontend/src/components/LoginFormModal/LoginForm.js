@@ -3,6 +3,8 @@ import { GiMountainCave } from "react-icons/gi";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
+import DemoUser from "../DemoUser";
+
 // css: SignupForm.css
 
 function LoginForm() {
@@ -56,9 +58,7 @@ function LoginForm() {
       <button type="submit" className="">
         Log In
       </button>
-      <button className="">
-        Demo User
-      </button>
+      <DemoUser />
     </form>
   );
 }

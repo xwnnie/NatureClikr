@@ -1,14 +1,31 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import "./UserCard.css";
 
-const UserCard = () => {
+const UserCard = ({user}) => {
+  const sessionUser = useSelector((state) => state.session.user);
+  // console.log("session", sessionUser)
+  //API call
+  // let user;
+  // useEffect(() => {
+    // async function fetchData() {
+    //   user = await fetch(`/api/users/${sessionUser.id}`).then((res) =>
+    //     res.json()
+    //   );
+    //   console.log("api-fetch", user);
+    // }
+    // fetchData();
+  // }, []);
   return (
     <div className="main-container">
       <div className="usercard">
         <div className="usercard-text">
-          <h1 id="usercard-username">Xiaowen Nie</h1>
+          <h1 id="usercard-username">{user.displayName}</h1>
           <div className="user-info">
-            <div>niexiaowen90</div>
-            <div>Joined 2022</div>
+            <div>{user.username}</div>
+            <div>{user.location}</div>
+            <div>Joined {user.createdAt}</div>
           </div>
         </div>
       </div>

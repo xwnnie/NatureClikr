@@ -28,10 +28,10 @@ function App() {
           {/* <Route path="/" exact>
             <Explore />
           </Route> */}
-          <Route path="/users/:userId" exact>
+          <Route path="/my" exact>
             <Profile />
           </Route>
-          <Route path="/users/:userId/photos/new">
+          <Route path="/my/photos/new">
             <Upload />
           </Route>
           <Route path="/photos/:photoId">

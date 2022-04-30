@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
         <NavLink exact to="/" id="explore-link">
           Explore
         </NavLink>
-        <NavLink to="/users/1" id="nav-you-link">
+        <NavLink to="/my" id="nav-you-link">
           You
         </NavLink>
         <form id="nav-search">
@@ -30,7 +30,7 @@ function Navigation({ isLoaded }) {
             <FaSearch />
           </button>
         </form>
-        <NavLink to="/users/1/photos/new" id="nav-upload-link">
+        <NavLink to="/my/photos/new" id="nav-upload-link">
           <FaCloudUploadAlt style={{ width: "20px" }} />
         </NavLink>
         <ProfileButton user={sessionUser} />

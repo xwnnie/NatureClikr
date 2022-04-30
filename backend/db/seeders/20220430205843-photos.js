@@ -23,6 +23,8 @@ module.exports = {
           location: "AZ",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-04-12",
+          updatedAt: "2022-04-12",
         },
         {
           name: "Green Succulent Plants",
@@ -32,6 +34,8 @@ module.exports = {
           location: "AZ",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-01-12",
+          updatedAt: "2022-01-12",
         },
         {
           name: "Green Succulent Plant",
@@ -41,6 +45,8 @@ module.exports = {
           location: "AZ",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-03-12",
+          updatedAt: "2022-03-12",
         },
         {
           name: "Black Hanging Bridge Surrounded by Green Forest Trees",
@@ -50,6 +56,8 @@ module.exports = {
           location: "AZ",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-03-15",
+          updatedAt: "2022-03-15",
         },
         {
           name: "Trees on a Dark Forest ",
@@ -59,6 +67,8 @@ module.exports = {
           location: "AZ",
           description: "beautiful",
           userId: 3,
+          createdAt: "2022-04-01",
+          updatedAt: "2022-04-01",
         },
         {
           name: "Green Leafed Tree",
@@ -68,6 +78,8 @@ module.exports = {
           location: "AZ",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-01-12",
+          updatedAt: "2022-01-12",
         },
         {
           name: "Close Up Photo of Blue Discus Fish",
@@ -77,6 +89,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 3,
+          createdAt: "2022-02-19",
+          updatedAt: "2022-02-19",
         },
         {
           name: "Clownfish near Coral Reef",
@@ -86,6 +100,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-03-15",
+          updatedAt: "2022-03-15",
         },
         {
           name: "White and Grey Kitten on Brown and Black Leopard Print Textile",
@@ -95,6 +111,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-04-14",
+          updatedAt: "2022-04-14",
         },
         {
           name: "Close-up Portrait of Lion",
@@ -104,6 +122,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 4,
+          createdAt: "2022-04-20",
+          updatedAt: "2022-04-20",
         },
         {
           name: "Brown Squirrel",
@@ -113,6 +133,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-04-30",
+          updatedAt: "2022-04-30",
         },
         {
           name: "Body of Water during Golden Hour",
@@ -122,6 +144,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-02-20",
+          updatedAt: "2022-02-20",
         },
         {
           name: "Landscape Photograph of Body of Water",
@@ -131,6 +155,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 4,
+          createdAt: "2022-01-11",
+          updatedAt: "2022-01-11",
         },
         {
           name: "Photo of a Turtle Swimming Underwater",
@@ -140,6 +166,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 4,
+          createdAt: "2022-04-02",
+          updatedAt: "2022-04-02",
         },
         {
           name: "Gray and Brown Mountain",
@@ -149,6 +177,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-03-22",
+          updatedAt: "2022-03-22",
         },
         {
           name: "Landscape Photography of Mountains Covered in Snow",
@@ -158,6 +188,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 3,
+          createdAt: "2022-01-30",
+          updatedAt: "2022-01-30",
         },
         {
           name: "Snow-top Mountain Under Clear Sky",
@@ -167,6 +199,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-03-25",
+          updatedAt: "2022-03-25",
         },
         {
           name: "Photo of Daisy Flowers",
@@ -176,6 +210,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-03-12",
+          updatedAt: "2022-03-12",
         },
         {
           name: "White Petaled Flowers",
@@ -185,6 +221,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 4,
+          createdAt: "2022-04-05",
+          updatedAt: "2022-04-05",
         },
         {
           name: "Photo of Leaves",
@@ -194,6 +232,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 3,
+          createdAt: "2022-02-21",
+          updatedAt: "2022-02-21",
         },
         {
           name: "Person Holding A Green Plant",
@@ -203,6 +243,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 4,
+          createdAt: "2022-01-28",
+          updatedAt: "2022-01-28",
         },
         {
           name: "Closeup Photo of Sprout",
@@ -212,6 +254,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 1,
+          createdAt: "2022-01-23",
+          updatedAt: "2022-01-23",
         },
         {
           name: "Person's Left Hand Holding Green Leaf Plant",
@@ -221,6 +265,8 @@ module.exports = {
           location: "CA",
           description: "beautiful",
           userId: 2,
+          createdAt: "2022-04-24",
+          updatedAt: "2022-04-24",
         },
       ],
       {}

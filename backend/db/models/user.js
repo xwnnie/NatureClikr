@@ -58,10 +58,15 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = function (models) {
-    User.hasMany(models.Photo, { foreignKey: "ownerId", onDelete: "CASCADE" });
+    User.hasMany(models.Photo, {
+      foreignKey: "ownerId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
     User.hasMany(models.Fave, {
       foreignKey: "faveUserId",
       onDelete: "CASCADE",
+      hooks: true
     });
     // const columnMapping = {
     //     as: 'userfaves',

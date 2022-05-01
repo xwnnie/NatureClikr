@@ -94,8 +94,9 @@ router.put(
 router.delete(
   "/:id(\\d+)",
   asyncHandler(async function (req, res) {
-    const id = await ItemsRepository.deleteItem(req.params.id);
-    return res.json({ id });
+    const photo = await Photo.findByPk(req.params.id);
+    photo.destroy();
+    return res.json(photo.id);
   })
 );
 

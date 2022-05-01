@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   Photo.associate = function(models) {
     // associations can be defined here
     Photo.belongsTo(models.User, { foreignKey: "ownerId" });
-    Photo.hasMany(models.Fave, { foreignKey: "photoId", onDelete: 'CASCADE' });
+    Photo.hasMany(models.Fave, { foreignKey: "photoId", onDelete: 'CASCADE', hooks: true });
     // const columnMapping = {
     //   as: "photofaves",
     //   through: "Fave",

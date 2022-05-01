@@ -26,7 +26,7 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      userId: {
+      ownerId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

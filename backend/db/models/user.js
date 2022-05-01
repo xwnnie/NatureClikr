@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     "User",
     {
       username: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false,
         validate: {
           len: [3, 30],
@@ -19,16 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       displayName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [3, 30],
-          isNotEmail(value) {
-            if (Validator.isEmail(value)) {
-              throw new Error("Cannot be an email.");
-            }
-          },
-        },
+        type: DataTypes.STRING(30),
+        allowNull: false
+      },
+      location: {
+        type: DataTypes.STRING(100),
       },
       email: {
         type: DataTypes.STRING,
@@ -48,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       defaultScope: {
         attributes: {
-          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"],
+          exclude: ["hashedPassword", "email", "updatedAt"],
         },
       },
       scopes: {
@@ -63,14 +58,18 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = function (models) {
-    User.hasMany(models.Photo, { foreignKey: "userId" });
-    User.hasMany(models.Fave, { foreignKey: "userId" });
-    const columnMapping = {
-        through: 'Fave', 
-        otherKey: 'photoId',
-        foreignKey: 'userId'
-    }
-    User.belongsToMany(models.Photo, columnMapping);
+    User.hasMany(models.Photo, { as: "userOwn", foreignKey: "ownerId", onDelete: "CASCADE" });
+    User.hasMany(models.Fave, {
+      foreignKey: "faveUserId",
+      onDelete: "CASCADE",
+    });
+    // const columnMapping = {
+    //     as: 'userfaves',
+    //     through: 'Fave', 
+    //     otherKey: 'photoId',
+    //     foreignKey: 'faveUserId'
+    // }
+    // User.belongsToMany(models.Photo, columnMapping);
   };
 
   User.prototype.toSafeObject = function () {

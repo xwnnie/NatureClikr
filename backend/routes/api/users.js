@@ -46,18 +46,50 @@ router.post(
 );
 
 
-//get details of a user
+//get info of a user
 router.get(
-  "/:id(\\d+)",
+  "/:id(\\d+)/info",
   asyncHandler(async (req, res) => {
     const userId = parseInt(req.params.id, 10);
 
-    const user = await User.findByPk(userId, {
-      include: [Photo, {model: Fave, include: Photo}]
-    });
+    const user = await User.findByPk(userId);
 
     return res.json({
       user
+    });
+  })
+);
+
+//get all photos of a user
+router.get(
+  "/:id(\\d+)/photos",
+  asyncHandler(async (req, res) => {
+    const ownerId = parseInt(req.params.id, 10);
+
+    const photos = await Photo.findAll({
+      where: { ownerId }
+    })
+
+    return res.json({
+      photos,
+    });
+  })
+);
+
+
+//get all faves of a user
+router.get(
+  "/:id(\\d+)/faves",
+  asyncHandler(async (req, res) => {
+    const faveUserId = parseInt(req.params.id, 10);
+
+    const photos = await Photo.findAll({
+      include: 
+        {model: Fave, where: {faveUserId}},
+    });
+
+    return res.json({
+      photos
     });
   })
 );

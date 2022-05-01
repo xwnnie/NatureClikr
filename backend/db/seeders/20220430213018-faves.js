@@ -17,23 +17,23 @@ module.exports = {
       [
         {
           photoId: 1,
-          userId: 2
+          faveUserId: 2
         },
         {
           photoId: 2,
-          userId: 1
+          faveUserId: 1
         },
         {
           photoId: 2,
-          userId: 3
+          faveUserId: 3
         },
         {
           photoId: 3,
-          userId: 1
+          faveUserId: 1
         },
         {
           photoId: 4,
-          userId: 4
+          faveUserId: 4
         }
       ],
       {}

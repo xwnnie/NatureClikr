@@ -1,4 +1,44 @@
 .photo-card {
     border: 1px gray solid;
-    border-radius: 10px;
+    border-radius: 2px;
+}
+
+div.all-images-container {
+    column-count: 3;
+    column-gap: 0px;
+    max-width: 80%;
+    min-width: 800px;
+    margin: auto;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.image-container {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-bottom: 0px;
+    break-inside: avoid;
+    position: relative;
+}
+
+.image-container>img {
+    grid-row: 1 / -1;
+    grid-column: 1;
+    cursor: pointer;
+}
+
+.grid-image {
+    max-width: 100%;
+    display: block;
+    border-radius: 2px;
+    min-width: 180px;
+    transition-duration: 0.2s;
+}
+
+.grid-image:hover {
+    opacity: 70%;
+    cursor: zoom-in;
+    transform: scale(1.03);
 }

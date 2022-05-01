@@ -94,4 +94,53 @@ router.get(
   })
 );
 
+
+//get all faves of a user
+router.get(
+  "/:id(\\d+)/faves",
+  asyncHandler(async (req, res) => {
+    const faveUserId = parseInt(req.params.id, 10);
+
+    const photos = await Photo.findAll({
+      include: 
+        {model: Fave, where: {faveUserId}},
+    });
+
+    return res.json({
+      photos
+    });
+  })
+);
+
+//check if a photo is in faves of the current session user
+router.get(
+  "/:userId(\\d+)/photos/:photoId(\\d+)/fave",
+  asyncHandler(async (req, res) => {
+    const faveUserId = parseInt(req.params.userId, 10);
+    const photoId = parseInt(req.params.photoId, 10);
+
+    const fave = await Fave.findAll({
+      where: { faveUserId, photoId },
+    });
+
+    // console.log(fave);
+
+    if (fave.length) return res.json({ message: "true" });
+    return res.json({ message: "false" });
+  })
+);
+
+//add a photo to faves
+router.post(
+  "/:userId(\\d+)/photos/:photoId(\\d+)/fave",
+  asyncHandler(async (req, res) => {
+    const faveUserId = parseInt(req.params.userId, 10);
+    const photoId = parseInt(req.params.photoId, 10);
+
+    await Fave.create({ faveUserId, photoId });
+    res.json({ message: "success" });
+  })
+);
+
+
 module.exports = router;

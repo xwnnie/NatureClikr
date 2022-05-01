@@ -1,18 +1,26 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Photo = sequelize.define('Photo', {
-    name: DataTypes.STRING,
-    src: DataTypes.TEXT,
-    width: DataTypes.DECIMAL,
-    height: DataTypes.DECIMAL,
-    location: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    ownerId: DataTypes.INTEGER,
-  }, {});
-  Photo.associate = function(models) {
+  const Photo = sequelize.define(
+    "Photo",
+    {
+      name: { type: DataTypes.STRING, allowNull: false },
+      src: { type: DataTypes.TEXT, allowNull: false },
+      width: { type: DataTypes.DECIMAL, allowNull: false },
+      height: { type: DataTypes.DECIMAL, allowNull: false },
+      location: DataTypes.STRING,
+      description: DataTypes.TEXT,
+      ownerId: { type: DataTypes.INTEGER, allowNull: false },
+    },
+    {}
+  );
+  Photo.associate = function (models) {
     // associations can be defined here
     Photo.belongsTo(models.User, { foreignKey: "ownerId" });
-    Photo.hasMany(models.Fave, { foreignKey: "photoId", onDelete: 'CASCADE', hooks: true });
+    Photo.hasMany(models.Fave, {
+      foreignKey: "photoId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
     // const columnMapping = {
     //   as: "photofaves",
     //   through: "Fave",

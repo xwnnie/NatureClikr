@@ -142,5 +142,25 @@ router.post(
   })
 );
 
+//remove a photo from faves
+router.delete(
+  "/:userId(\\d+)/photos/:photoId(\\d+)/fave",
+  asyncHandler(async (req, res) => {
+    const faveUserId = parseInt(req.params.userId, 10);
+    const photoId = parseInt(req.params.photoId, 10);
+
+    const fave = await Fave.findOne({
+      where: { faveUserId, photoId },
+    });
+  
+    if (fave) {
+      await fave.destroy();
+      res.json({ message: "success" });      
+    } else {
+      res.json({message: "failure: photo not in faves"})
+    }
+
+  })
+);
 
 module.exports = router;

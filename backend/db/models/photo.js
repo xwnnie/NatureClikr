@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Photo.associate = function(models) {
     // associations can be defined here
-    Photo.belongsTo(models.User, {as: "photoOwn", foreignKey: "ownerId" });
+    Photo.belongsTo(models.User, { foreignKey: "ownerId" });
     Photo.hasMany(models.Fave, { foreignKey: "photoId", onDelete: 'CASCADE' });
     // const columnMapping = {
     //   as: "photofaves",

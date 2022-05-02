@@ -3,8 +3,9 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos, deletePhoto } from "../../store/photos.js";
+import EditPhotoModal from "../EditPhotoModal/index.js";
+import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 
-// import photos from "../../data/photos-raw.js";
 import "./PhotoDetail.css";
 
 
@@ -17,42 +18,26 @@ const PhotoDetail = () => {
   const photos = useSelector((state) => state.photos.order);
   const sessionUser = useSelector((state) => state.session.user);
 
-
-  // console.log(photosObj);
-  // const photos = Object.values(photosObj);
-  // console.log("photos", photos)
   const photo = photos.find(photo => photo.id === +photoId);
-  console.log("photo", photo);
+  // console.log("photo", photo);
 
   const index = photos.indexOf(photo);
   let date = new Date(photo?.createdAt);
 
   date = date.toDateString();
   // console.log(index)
-
-
-  const editPhoto = () => {
-
-  }
   
-  const deleteCurrentPhoto = async () => {
-    const deletedPhotoId = await dispatch(deletePhoto(photoId));
-    if (deletedPhotoId) {
-      history.push(`/`);
-    }
-  }
 
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
     // console.log("user matched!");
     editDeleteLinks = (
       <div>
-        <Link id="edit-link" onClick={editPhoto}>
-          <i class="fa-solid fa-pen-to-square"></i>
-        </Link>
-        <Link id="delete-link" onClick={deleteCurrentPhoto}>
+        <EditPhotoModal />
+        <DeleteConfirmModal />
+        {/* <button id="delete-link" onClick={deleteCurrentPhoto}>
           <i class="fa-solid fa-trash-can"></i>
-        </Link>
+        </button> */}
       </div>
     );
   }

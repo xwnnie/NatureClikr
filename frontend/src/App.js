@@ -7,7 +7,7 @@ import SplashPage from "./components/SplashPage";
 import Explore from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import Profile from "./components/Profile";
-import Upload from "./components/Upload";
+// import Upload from "./components/Upload";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,9 +31,9 @@ function App() {
           <Route path="/my" exact>
             <Profile />
           </Route>
-          <Route path="/my/photos/new">
+          {/* <Route path="/my/photos/new">
             <Upload />
-          </Route>
+          </Route> */}
           <Route path="/photos/:photoId">
             <PhotoDetail />
           </Route>

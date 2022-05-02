@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import UploadPhotoModal from "../UploadPhotoModal";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { GiMountainCave } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
@@ -30,9 +31,7 @@ function Navigation({ isLoaded }) {
             <FaSearch />
           </button>
         </form>
-        <NavLink to="/my/photos/new" id="nav-upload-link">
-          <FaCloudUploadAlt style={{ width: "20px" }} />
-        </NavLink>
+        <UploadPhotoModal />
         <ProfileButton user={sessionUser} />
       </>
     );

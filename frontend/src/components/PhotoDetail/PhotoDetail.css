@@ -60,7 +60,7 @@
     content: "\2606";
     position: absolute;
     right: 5.5%;
-    top:  20px;
+    top:  45px;
     /* top: 130px; */
     visibility: visible;
     color: yellow;
@@ -89,14 +89,18 @@
     color: white;
     font-size: 20px;
     position: absolute;
-    right: 6%;
-    top: 120px;
+    right: 5.5%;
+    top: 130px;
+    border: none;
+    background-color: transparent;
 }
 
 #delete-link {
     color: white;
     font-size: 20px;
     position: absolute;
-    right: 6%;
+    right: 5.5%;
     top: 200px;
+    border: none;
+    background-color: transparent;
 }

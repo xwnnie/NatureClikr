@@ -1,0 +1,19 @@
+.upload-form {
+    /* border: 1px solid black; */
+    min-width: 300px;
+    width: 400px;
+    margin: 20px auto;
+}
+
+#select-photo-img {
+    width: 300px;
+}
+
+#nav-upload-btn {
+    color: white;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 18%;
+    padding-top: 12px;
+}

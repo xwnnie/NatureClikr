@@ -4,15 +4,6 @@ NatureClikr is a website for users to upload and browse photos about nature. It 
 
 Try at the live site: [NatureClikr](https://nature-clikr.herokuapp.com/)
 
-# Index
-
-|
-[MVP Feature List](https://github.com/xwnnie/NatureClikr/wiki/Feature-List) |
-[Database Schema](https://github.com/xwnnie/NatureClikr/wiki/Database-Schema) |
-
-# Technologies Used
-
-<img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"  height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" height=50/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"  height=40/><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"  height=40/>
 
 # Getting started
 

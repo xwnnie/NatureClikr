@@ -1,61 +1,82 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import photos from "../../data/photos-raw.js";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getPhotos } from "../../store/photos.js";
+
+// import photos from "../../data/photos-raw.js";
 import "./PhotoDetail.css";
 
 
-
 const PhotoDetail = () => {
+  const dispatch = useDispatch();
+
   const { photoId } = useParams();
-  const photo = photos.find((photo) => photo.id == photoId);
+  const photos = useSelector((state) => state.photos.order);
+  // console.log(photosObj);
+  // const photos = Object.values(photosObj);
+  // console.log("photos", photos)
+  const photo = photos.find(photo => photo.id === +photoId);
+  console.log("photo", photo);
+
+  const index = photos.indexOf(photo);
+  let date = new Date(photo?.createdAt);
+
+  date = date.toDateString();
+  // console.log(index)
   //check if the photo belongs to faves of current loggedin user to decide initial value of fav
+  
+  useEffect(() => {
+    dispatch(getPhotos());
+  }, [dispatch]);
 
   const faves = [];
-  const [fav, setFav] = useState(false);
+  const [fave, setFave] = useState(false);
 
   useEffect(() => {
-    if (fav) {
+    if (fave) {
       faves.push(photo);
       console.log(faves);
     }
-  }, [fav]);
+  }, [fave]);
 
   return (
     <div className="main-container ">
       <div className="photo-detail-card">
         <Link to="/" className="back-link">
-          <i class="fa-solid fa-arrow-left" style={{ fontSize: "12px" }} /> BACK
+          <i className="fa-solid fa-arrow-left" style={{ fontSize: "12px" }} />{" "}
+          BACK
         </Link>
         <input
           className="star"
           type="checkbox"
           name="addFave"
-          checked={fav}
+          checked={fave}
           onClick={(e) => {
-            setFav(e.target.checked);
+            setFave(e.target.checked);
           }}
         />
         <div className="photo-container">
           <Link
-            to={`/photos/${parseInt(photoId) - 1}`}
-            className={
-              parseInt(photoId) - 1 > 0 ? "left-right-arrows" : "hidden"
-            }
+            to={index > 0 ? `/photos/${photos[index - 1].id}` : null}
+            className={index > 0 ? "left-right-arrows" : "hidden"}
           >
             {/* <span>&lt;</span> */}
-            <i class="fa-solid fa-chevron-left"></i>
+            <i className="fa-solid fa-chevron-left"></i>
           </Link>
-          <img src={photo.src} className="photo-detail-img" />
+          <img src={photo?.url} className="photo-detail-img" />
           <Link
-            to={`/photos/${parseInt(photoId) + 1}`}
+            to={
+              index < photos.length - 1
+                ? `/photos/${photos[index + 1].id}`
+                : null
+            }
             className={
-              parseInt(photoId) + 1 <= photos.length
-                ? "left-right-arrows"
-                : "hidden"
+              index < photos.length - 1 ? "left-right-arrows" : "hidden"
             }
           >
             {/* <span>&gt;</span> */}
-            <i class="fa-solid fa-chevron-right"></i>
+            <i className="fa-solid fa-chevron-right"></i>
           </Link>
         </div>
         {/* <div className="left-right-arrows">
@@ -63,11 +84,11 @@ const PhotoDetail = () => {
           <FaAngleRight />
         </div> */}
         <div className="photo-caption">
-          <h3 className="">{photo.name}</h3>
-          <p className="">author</p>
-          <p className="">date</p>
-          <p className="">location</p>
-          <p className="">description</p>
+          <h3 className="">{photo?.name}</h3>
+          <p className="">Author: {photo?.ownerId}</p>
+          <p className="">{date}</p>
+          <p className="">{photo?.location}</p>
+          <p className="">{photo?.description}</p>
         </div>
       </div>
       {/* <Comment photo={photo} /> */}

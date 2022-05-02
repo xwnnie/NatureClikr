@@ -33,7 +33,7 @@ const validatePhoto = [
     .withMessage("Name cannot be empty.")
     .isLength({ max: 200 })
     .withMessage("Name cannot be more than 200 characters long"),
-  check("src")
+  check("url")
     .exists({ checkFalsy: true })
     .withMessage("Please upload an image."),
 ];

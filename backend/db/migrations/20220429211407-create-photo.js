@@ -12,17 +12,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      src: {
+      url: {
         allowNull: false,
         type: Sequelize.TEXT,
-      },
-      width: {
-        allowNull: false,
-        type: Sequelize.DECIMAL,
-      },
-      height: {
-        allowNull: false,
-        type: Sequelize.DECIMAL,
       },
       location: {
         type: Sequelize.STRING,

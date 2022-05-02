@@ -94,24 +94,6 @@ router.get(
   })
 );
 
-
-//get all faves of a user
-router.get(
-  "/:id(\\d+)/faves",
-  asyncHandler(async (req, res) => {
-    const faveUserId = parseInt(req.params.id, 10);
-
-    const photos = await Photo.findAll({
-      include: 
-        {model: Fave, where: {faveUserId}},
-    });
-
-    return res.json({
-      photos
-    });
-  })
-);
-
 //check if a photo is in faves of the current session user
 router.get(
   "/:userId(\\d+)/photos/:photoId(\\d+)/fave",

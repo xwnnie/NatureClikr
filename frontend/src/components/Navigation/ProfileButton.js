@@ -35,7 +35,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu} id="nav-logout-link">
-        <i class="fa-solid fa-user-ninja" />
+        <i className="fa-solid fa-user-ninja" />
       </button>
       {showMenu && (
         <div className="profile-dropdown">

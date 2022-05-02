@@ -4,9 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "Photo",
     {
       name: { type: DataTypes.STRING, allowNull: false },
-      src: { type: DataTypes.TEXT, allowNull: false },
-      width: { type: DataTypes.DECIMAL, allowNull: false },
-      height: { type: DataTypes.DECIMAL, allowNull: false },
+      url: { type: DataTypes.TEXT, allowNull: false },
       location: DataTypes.STRING,
       description: DataTypes.TEXT,
       ownerId: { type: DataTypes.INTEGER, allowNull: false },

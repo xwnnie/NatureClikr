@@ -8,8 +8,7 @@ const DemoUser = () => {
 
   const loginDemo = (e) => {
     e.preventDefault();
-    // const credential = "D";
-    // const password = "123456";
+    
     return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password"})).catch(
       async (res) => {
         await res.json();

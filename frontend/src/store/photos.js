@@ -7,6 +7,7 @@ const LOAD = "photos/LOAD";
 
 const CREATE = "photos/CREATE";
 const UPDATE = "photos/UPDATE";
+const REMOVE = "photos/REMOVE";
 
 const load = (photos) => ({
   type: LOAD,
@@ -26,6 +27,11 @@ const create = (photo) => ({
 const edit = (photo) => ({
   type: UPDATE,
   photo,
+});
+
+const remove = (photoId) => ({
+  type: REMOVE,
+  photoId,
 });
 
 export const getPhotos = () => async (dispatch) => {
@@ -86,6 +92,21 @@ export const editPhoto = (data) => async (dispatch) => {
   }
 };
 
+export const deletePhoto = (photoId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/photos/${photoId}`, {
+    method: "DELETE"
+  });
+
+  if (response.ok) {
+    const deletedPhotoId = await response.json();
+    dispatch(remove(photoId));
+    return deletedPhotoId;
+  } else {
+    const errors = await response.json();
+    console.log(errors.errors);
+  }
+};
+
 
 
 
@@ -137,6 +158,16 @@ const photoReducer = (state = initialState, action) => {
       return {
 
       };
+    }
+    case REMOVE: {
+      const newState = {...state};
+      delete newState[action.photoId];
+      const index = state.order.findIndex(
+        (photo) => photo.id === action.photoId
+      );
+      newState.order.splice(index, 1);
+
+      return newState
     }
     default:
         return state;

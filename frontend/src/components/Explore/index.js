@@ -12,12 +12,10 @@ const Explore = () => {
   // const sessionUser = useSelector((state) => state.session.user);
 
   const photos = useSelector((state) => state.photos.order);
-
-
   
   useEffect(() => {
     dispatch(getPhotos());
-  }, [dispatch]);
+  }, [dispatch, photos]);
 
   const redirectToPhoto = (photo) => {
     history.push(`/photos/${photo.id}`);

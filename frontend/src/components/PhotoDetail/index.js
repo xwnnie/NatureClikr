@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getPhotos } from "../../store/photos.js";
+import { getPhotos, deletePhoto } from "../../store/photos.js";
 
 // import photos from "../../data/photos-raw.js";
 import "./PhotoDetail.css";
 
 
 const PhotoDetail = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const { photoId } = useParams();
@@ -34,18 +35,22 @@ const PhotoDetail = () => {
 
   }
   
-  const deletePhoto = () => {
-
+  const deleteCurrentPhoto = async () => {
+    const deletedPhotoId = await dispatch(deletePhoto(photoId));
+    if (deletedPhotoId) {
+      history.push(`/`);
+    }
   }
+
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
-    console.log("user matched!");
+    // console.log("user matched!");
     editDeleteLinks = (
       <div>
         <Link id="edit-link" onClick={editPhoto}>
           <i class="fa-solid fa-pen-to-square"></i>
         </Link>
-        <Link id="delete-link" onClick={deletePhoto}>
+        <Link id="delete-link" onClick={deleteCurrentPhoto}>
           <i class="fa-solid fa-trash-can"></i>
         </Link>
       </div>

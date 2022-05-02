@@ -5,7 +5,7 @@ const LOAD = "photos/LOAD";
 // //get one photo
 // const LOAD_ONE_PHOTO = "photo/LOAD";
 
-// const CREATE = "photos/CREATE";
+const CREATE = "photos/CREATE";
 const UPDATE = "photos/UPDATE";
 
 const load = (photos) => ({
@@ -17,6 +17,11 @@ const load = (photos) => ({
 //   type: LOAD_ONE_PHOTO,
 //   photo,
 // });
+
+const create = (photo) => ({
+  type: CREATE,
+  photo,
+});
 
 const edit = (photo) => ({
   type: UPDATE,
@@ -49,6 +54,21 @@ export const getPhotos = () => async (dispatch) => {
 //   }
 // };
 
+export const uploadPhoto = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/photos`, {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    const photo = await response.json();
+    dispatch(create(photo));
+    return photo;
+  } else {
+    const errors = await response.json();
+    console.log(errors.errors);
+  }
+};
 
 export const editPhoto = (data) => async (dispatch) => {
   const response = await csrfFetch(`/api/photos/${data.id}`, {
@@ -94,6 +114,15 @@ const photoReducer = (state = initialState, action) => {
         ...state,
         ...allPhotos,
         order: [...action.photos],
+      };
+    }
+    case CREATE: {
+      const newPhoto = {};
+      newPhoto[action.photo.id] = action.photo;
+      return {
+        ...state,
+        newPhoto,
+        order: [...state.order, newPhoto],
       };
     }
 

@@ -52,14 +52,14 @@
 
 .star {
     visibility: hidden;
-    font-size: 40px;
+    font-size: 35px;
     cursor: pointer;
 }
 
 .star:before {
     content: "\2606";
     position: absolute;
-    right: 5%;
+    right: 5.5%;
     top:  20px;
     /* top: 130px; */
     visibility: visible;
@@ -83,4 +83,20 @@
 .left-right-arrows:hover {
     color: white;
     transform: scale(1.2);
+}
+
+#edit-link {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: 6%;
+    top: 120px;
+}
+
+#delete-link {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: 6%;
+    top: 200px;
 }

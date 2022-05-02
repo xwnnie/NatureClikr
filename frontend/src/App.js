@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import FrontPage from "./components/FrontPage";
+import SplashPage from "./components/SplashPage";
 import Explore from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import Profile from "./components/Profile";
@@ -23,7 +23,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/" exact>
-            <FrontPage isLoaded={isLoaded} />
+            <SplashPage isLoaded={isLoaded} />
           </Route>
           {/* <Route path="/" exact>
             <Explore />

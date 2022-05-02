@@ -12,7 +12,11 @@ const PhotoDetail = () => {
   const dispatch = useDispatch();
 
   const { photoId } = useParams();
+
   const photos = useSelector((state) => state.photos.order);
+  const sessionUser = useSelector((state) => state.session.user);
+
+
   // console.log(photosObj);
   // const photos = Object.values(photosObj);
   // console.log("photos", photos)
@@ -24,6 +28,31 @@ const PhotoDetail = () => {
 
   date = date.toDateString();
   // console.log(index)
+
+
+  const editPhoto = () => {
+
+  }
+  
+  const deletePhoto = () => {
+
+  }
+  let editDeleteLinks;
+  if (sessionUser.id === photo?.ownerId) {
+    console.log("user matched!");
+    editDeleteLinks = (
+      <div>
+        <Link id="edit-link" onClick={editPhoto}>
+          <i class="fa-solid fa-pen-to-square"></i>
+        </Link>
+        <Link id="delete-link" onClick={deletePhoto}>
+          <i class="fa-solid fa-trash-can"></i>
+        </Link>
+      </div>
+    );
+  }
+
+
   //check if the photo belongs to faves of current loggedin user to decide initial value of fav
   
   useEffect(() => {
@@ -56,6 +85,7 @@ const PhotoDetail = () => {
             setFave(e.target.checked);
           }}
         />
+        {sessionUser && editDeleteLinks}
         <div className="photo-container">
           <Link
             to={index > 0 ? `/photos/${photos[index - 1].id}` : null}

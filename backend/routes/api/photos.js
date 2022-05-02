@@ -48,10 +48,7 @@ router.post(
 
     if (validatorErrors.isEmpty()) {
       await photo.save();
-      res.json({
-        message: "Success",
-        photo,
-      });
+      res.json(photo);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.json({
@@ -76,10 +73,7 @@ router.put(
 
     if (validatorErrors.isEmpty()) {
       await photo.update(req.body);
-      res.json({
-        message: "Success",
-        photo,
-      });
+      res.json(photo);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.json({

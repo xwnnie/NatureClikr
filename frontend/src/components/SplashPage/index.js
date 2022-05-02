@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Explore from "../Explore";
 import Welcome from "../Welcome";
 
-const FrontPage = ({ isLoaded }) => {
+const SplashPage = ({ isLoaded }) => {
     const sessionUser = useSelector((state) => state.session.user);
     let mainPage;
     if (sessionUser) {
@@ -23,4 +23,4 @@ const FrontPage = ({ isLoaded }) => {
     );
 };
 
-export default FrontPage;
+export default SplashPage;

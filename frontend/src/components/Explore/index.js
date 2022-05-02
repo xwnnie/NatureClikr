@@ -8,12 +8,13 @@ import { getPhotos } from "../../store/photos";
 
 const Explore = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   // const sessionUser = useSelector((state) => state.session.user);
 
   const photos = useSelector((state) => state.photos.order);
 
 
-  const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getPhotos());
   }, [dispatch]);

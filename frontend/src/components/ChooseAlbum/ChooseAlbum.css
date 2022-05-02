@@ -1,0 +1,33 @@
+.album-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.album-card {
+    width: 200px;
+    padding: 1em;
+    transition: transform 200ms ease;
+    color: var(--primary-color);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+}
+
+.album-card h1 {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.album-cover {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 2px 5px lightgray;
+    cursor: pointer;
+}
+
+
+.album-card:hover {
+    transform: translateY(-4px) scale(1.05);
+}

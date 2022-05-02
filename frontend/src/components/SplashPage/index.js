@@ -1,26 +1,17 @@
-import { useSelector } from "react-redux";
+import "./SplashPage.css";
+import StartFreeModal from "./StartFreeModal";
 
-import Explore from "../Explore";
-import Welcome from "../Welcome";
-
-const SplashPage = ({ isLoaded }) => {
-    const sessionUser = useSelector((state) => state.session.user);
-    let mainPage;
-    if (sessionUser) {
-        mainPage = (
-            <Explore />
-        )
-    } else {
-        mainPage = (
-           <Welcome />
-        )
-    }
-
+const SplashPage = () => {
     return (
-        <div>
-            {isLoaded && mainPage}
+        <div className="center-text">
+            <h1>Find your inner peace.</h1>
+            <p>
+            Join the NatureClikr community, home to nature lovers.
+            </p>
+            <StartFreeModal />          
         </div>
+
     );
-};
+}
 
 export default SplashPage;

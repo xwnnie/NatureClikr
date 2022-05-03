@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import UploadForm from "./UploadForm";
+import MyDeleteConfirm from "./MyDeleteConfirm";
 
-function UploadPhotoModal() {
+function DeleteConfirmModal({photoId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} id="nav-upload-btn">
-        <i className="fa-solid fa-cloud-arrow-up"></i>
+      <button onClick={() => setShowModal(true)} id="my-delete-link">
+        <i class="fa-solid fa-trash-can"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <UploadForm showModal={setShowModal}/>
+          <MyDeleteConfirm photoId={photoId}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default UploadPhotoModal;
+export default DeleteConfirmModal;

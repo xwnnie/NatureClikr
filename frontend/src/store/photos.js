@@ -116,13 +116,6 @@ const initialState = {
   order: [],
 };
 
-// const sortList = (list) => {
-//   return list
-//     .sort((pokemonA, pokemonB) => {
-//       return pokemonA.number - pokemonB.number;
-//     })
-//     .map((pokemon) => pokemon.id);
-// };
 
 const photoReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -154,17 +147,22 @@ const photoReducer = (state = initialState, action) => {
     //   }
     // }
     case UPDATE: {
-
-      return {
-
+      const index = state.order.findIndex(
+        (photo) => photo.id === action.photo.id
+      );
+      const newState = {
+        ...state,
+        [action.photo.id]: action.photo,
       };
+      newState.order[index] = action.photo;
+      return newState;
     }
     case REMOVE: {
       const newState = {...state};
-      delete newState[action.photoId];
       const index = state.order.findIndex(
         (photo) => photo.id === action.photoId
       );
+      delete newState[action.photoId];
       newState.order.splice(index, 1);
 
       return newState

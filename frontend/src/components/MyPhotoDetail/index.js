@@ -8,29 +8,27 @@ import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 
 import "./PhotoDetail.css";
 
-
 const PhotoDetail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPhotos());
+    }, [dispatch]);
 
   const { photoId } = useParams();
 
   const photos = useSelector((state) => state.photos.order);
   const sessionUser = useSelector((state) => state.session.user);
 
-  const photo = photos.find(photo => photo.id === +photoId);
+  const photo = photos.find((photo) => photo.id === +photoId);
   // console.log("photo", photo);
-
-    useEffect(() => {
-      dispatch(getPhotos());
-    }, [dispatch]);
 
   const index = photos.indexOf(photo);
   let date = new Date(photo?.createdAt);
 
   date = date.toDateString();
   // console.log(index)
-  
 
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
@@ -44,7 +42,7 @@ const PhotoDetail = () => {
   }
 
   //check if the photo belongs to faves of current loggedin user to decide initial value of fav
-  
+
 
 
   const faves = [];

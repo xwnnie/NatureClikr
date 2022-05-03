@@ -7,6 +7,7 @@ import FrontPage from "./components/FrontPage";
 import Explore from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import Profile from "./components/Profile";
+import MyPhotos from "./components/MyPhotos";
 // import Upload from "./components/Upload";
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           {/* <Route path="/my/photos/new">
             <Upload />
           </Route> */}
+          <Route  path="/my/photos">
+            <MyPhotos />
+          </Route>
           <Route path="/photos/:photoId">
             <PhotoDetail />
           </Route>

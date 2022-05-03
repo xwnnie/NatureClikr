@@ -15,22 +15,15 @@ const Explore = () => {
   
   useEffect(() => {
     dispatch(getPhotos());
-  }, [dispatch, photos]);
+  }, [dispatch]);
 
   const redirectToPhoto = (photo) => {
-    history.push(`/photos/${photo.id}`);
+    history.push(`/photos/${photo.id}`, {from: "explore"});
   };
 
   return (
     <div className="explore-container">
       <h1 style={{ paddingTop: "15px" }}>Explore photos</h1>
-      {/* <Gallery
-        photos={photos}
-        onClick={(e) => {
-          redirectToPhoto(e.target);
-        }}
-        direction={"column"}
-      /> */}
       <div className="masonry">
         {photos.map((photo) => (
           <div className="masonry-item" key={photo.id}>

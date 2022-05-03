@@ -9,19 +9,9 @@ const UserCard = () => {
   let date = new Date(user?.createdAt);
   date = date.getFullYear();
   // console.log("session", sessionUser)
-  //API call
-  // let user;
-  // useEffect(() => {
-    // async function fetchData() {
-    //   user = await fetch(`/api/users/${sessionUser.id}`).then((res) =>
-    //     res.json()
-    //   );
-    //   console.log("api-fetch", user);
-    // }
-    // fetchData();
-  // }, []);
+
   return (
-    <div className="main-container">
+    // <div className="main-container">
       <div className="usercard">
         <div className="usercard-text">
           <h1 id="usercard-username">{user?.displayName}</h1>
@@ -32,7 +22,7 @@ const UserCard = () => {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

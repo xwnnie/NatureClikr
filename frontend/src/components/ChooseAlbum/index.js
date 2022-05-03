@@ -4,13 +4,7 @@ import myPhotosImg from "../../images/my-photos.png";
 import myFavesImg from "../../images/my-faves.png";
 
 const ChooseAlbum = () => {
-//   const history = useHistory();
-//   const toMyPhotos = () => {
-//     history.push("/users/1/my-photos");
-//   };
-//   const toMyFaves = () => {
-//     history.push("/users/1/my-faves");
-//   };
+
   return (
     <div className="main-container">
       <div className="album-container">

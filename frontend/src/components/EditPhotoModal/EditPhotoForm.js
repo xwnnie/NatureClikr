@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
-import { editPhoto } from "../../store/photos";
+import { getPhotos, editPhoto } from "../../store/photos";
 // import "./Upload.css";
 
-const EditPhotoForm = () => {
+const EditPhotoForm = ({ showModal }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -46,12 +46,16 @@ const EditPhotoForm = () => {
       ownerId: sessionUser.id,
     };
 
+    // dispatch(editPhoto(payload));
+
     let newPhoto = await dispatch(editPhoto(payload));
-    console.log(newPhoto);
+    
+    // console.log(newPhoto);
     if (newPhoto) {
       history.push(`/photos/${newPhoto.id}`);
       // URL.revokeObjectURL(photoURL);
       // hideForm();
+      showModal(false);
     }
   };
 

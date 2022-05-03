@@ -1,0 +1,62 @@
+.my-photos-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.my-photo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    /* width: 80%; */
+}
+.my-img {
+    width: 60%;
+    transition: 0.5s;
+    /* transition-duration: 2s; */
+}
+
+.edit-delete-modal-btn {
+    position: absolute;
+    top: 30%;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s;
+    transition: visibility 0s, opacity 0.5s linear;
+    /* transition-property: display; */
+}
+
+#my-edit-link, #my-delete-link, #my-comment-link {
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    /* display: none; */
+}
+/* #my-edit-link {
+    position: absolute;
+    top: 30%
+}
+#my-delete-link {
+    position: absolute;
+    bottom: 30%
+} */
+.edit-delete-modal-btn:hover + .my-img, .my-img:hover {
+    opacity: 0.8;
+}
+
+/* .my-img:hover {
+    opacity: 0.8;
+} */
+
+.my-img:hover + .edit-delete-modal-btn, .edit-delete-modal-btn:hover {
+    visibility: visible;
+    opacity: 1;
+}
+
+

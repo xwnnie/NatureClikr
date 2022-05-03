@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "../../context/Modal";
-import EditPhotoForm from "./EditPhotoForm";
+import MyPhotoEditForm from "./MyPhotoEditForm.js";
 
-function EditPhotoModal({ photoId }) {
+function MyPhotoEditModal({ photoId }) {
   const [showModal, setShowModal] = useState(false);
-
+//   console.log(photoId);
   return (
     <>
-      <button onClick={() => setShowModal(true)} id="edit-link">
+      <button onClick={() => setShowModal(true)} id="my-edit-link">
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPhotoForm photoId={photoId} showModal={setShowModal}/>
+          <MyPhotoEditForm photoId={photoId}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default EditPhotoModal;
+export default MyPhotoEditModal;

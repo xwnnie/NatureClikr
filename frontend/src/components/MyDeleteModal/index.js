@@ -8,7 +8,7 @@ function DeleteConfirmModal({photoId}) {
   return (
     <>
       <button onClick={() => setShowModal(true)} id="my-delete-link">
-        <i class="fa-solid fa-trash-can"></i>
+        <i className="fa-solid fa-trash-can"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

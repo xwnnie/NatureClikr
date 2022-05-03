@@ -9,7 +9,7 @@ function MyPhotoEditModal({ photoId }) {
   return (
     <>
       <button onClick={() => setShowModal(true)} id="my-edit-link">
-        <i class="fa-solid fa-pen-to-square"></i>
+        <i className="fa-solid fa-pen-to-square"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

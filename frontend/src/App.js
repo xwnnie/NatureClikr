@@ -9,6 +9,8 @@ import PhotoDetail from "./components/PhotoDetail";
 import MyPhotoDetail from "./components/MyPhotoDetail";
 import Profile from "./components/Profile";
 import MyPhotos from "./components/MyPhotos";
+import MyFaves from "./components/MyFaves";
+import MyFaveDetail from "./components/MyFaveDetail";
 // import Upload from "./components/Upload";
 
 function App() {
@@ -41,6 +43,12 @@ function App() {
           </Route>
           <Route path="/my/photos/:photoId">
             <MyPhotoDetail />
+          </Route>
+          <Route path="/my/faves" exact>
+            <MyFaves />
+          </Route>
+          <Route path="/my/faves/:photoId" exact>
+            <MyFaveDetail />
           </Route>
           <Route path="/photos/:photoId">
             <PhotoDetail />

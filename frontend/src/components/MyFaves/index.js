@@ -3,42 +3,42 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos } from "../../store/photos";
+import { getFaves } from "../../store/faves";
 import UserCard from "../UserCard";
 import MyPhotoEditModal from "../MyPhotoEditModal";
 import MyDeleteModal from "../MyDeleteModal";
 
-import "./MyPhotos.css"
+// import "./MyPhotos.css";
 
-
-const MyPhotos = () => {
+const MyFaves = () => {
   const dispatch = useDispatch();
 
-    let photos = useSelector((state) => state.photos);
-    photos = Object.values(photos);
-    // console.log(photos)
+  let faves = useSelector((state) => state.faves);
+  faves = Object.values(faves);
+  // console.log(photos)
 
-    photos.sort((a, b) => {
-      const keyA = new Date(a.createdAt);
-      const keyB = new Date(b.createdAt);
-      return keyA > keyB ? -1 : 1;
-    });
+//   photos.sort((a, b) => {
+//     const keyA = new Date(a.createdAt);
+//     const keyB = new Date(b.createdAt);
+//     return keyA > keyB ? -1 : 1;
+//   });
 
-    // console.log(photos);
+  // console.log(photos);
 
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(getPhotos());
+    dispatch(getFaves(sessionUser.id));
   }, [dispatch]);
 
-  const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
-//   console.log(myPhotos);
+//   const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
+  //   console.log(myPhotos);
   return (
     <div className="main-container">
       <UserCard />
-      <h2>my photos</h2>
+      <h2>my faves</h2>
       <div className="my-photos-container">
-        {myPhotos.map((photo) => (
+        {faves.map((photo) => (
           <div className="my-photo-container" key={photo.id}>
             <img
               key={photo?.id}
@@ -47,9 +47,11 @@ const MyPhotos = () => {
               className="my-img"
             />
             <div className="edit-delete-modal-btn">
-              <MyPhotoEditModal photoId={photo?.id} />
-              <MyDeleteModal photoId={photo?.id} />              
-                <Link to={`/my/photos/${photo.id}`}><i className="fa-solid fa-comment" id="my-comment-link" /></Link>
+              {/* <MyPhotoEditModal photoId={photo?.id} />
+              <MyDeleteModal photoId={photo?.id} /> */}
+              <Link to={`/my/faves/${photo.id}`}>
+                <i className="fa-solid fa-comment" id="my-comment-link" />
+              </Link>
             </div>
           </div>
         ))}
@@ -58,4 +60,4 @@ const MyPhotos = () => {
   );
 };
 
-export default MyPhotos;
+export default MyFaves;

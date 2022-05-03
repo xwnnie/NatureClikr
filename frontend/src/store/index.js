@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 
 import sessionReducer from "./session";
 import photoReducer from "./photos";
+import faveReducer from "./faves";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  photos: photoReducer
+  photos: photoReducer,
+  faves: faveReducer
 });
 
 let enhancer;

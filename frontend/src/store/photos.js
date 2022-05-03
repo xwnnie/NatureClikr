@@ -1,10 +1,6 @@
 import { csrfFetch } from "./csrf";
 //get all photos
 const LOAD = "photos/LOAD";
-
-// //get one photo
-// const LOAD_ONE_PHOTO = "photo/LOAD";
-
 const CREATE = "photos/CREATE";
 const UPDATE = "photos/UPDATE";
 const REMOVE = "photos/REMOVE";
@@ -13,11 +9,6 @@ const load = (photos) => ({
   type: LOAD,
   photos,
 });
-
-// const load_one_photo = (photo) => ({
-//   type: LOAD_ONE_PHOTO,
-//   photo,
-// });
 
 const create = (photo) => ({
   type: CREATE,
@@ -46,19 +37,6 @@ export const getPhotos = () => async (dispatch) => {
     console.log(errors.errors);
   }
 };
-
-// export const getOnePhoto = (photoId) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/photos/${photoId}`);
-//   //   console.log(response)
-
-//   if (response.ok) {
-//     const photo = await response.json();
-//     dispatch(load_one_photo(photo));
-//   } else {
-//     const errors = await response.json();
-//     console.log(errors.errors);
-//   }
-// };
 
 export const uploadPhoto = (data) => async (dispatch) => {
   const response = await csrfFetch(`/api/photos`, {
@@ -119,7 +97,7 @@ const photoReducer = (state = initialState, action) => {
     case LOAD: {
       const allPhotos = {};
       // const order = {};
-      action.photos.forEach((photo, index) => {
+      action.photos.forEach((photo) => {
           allPhotos[photo.id] = photo;
           // order[index] = photo;
       });

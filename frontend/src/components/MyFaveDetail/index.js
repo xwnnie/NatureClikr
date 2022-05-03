@@ -2,38 +2,31 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getPhotos, deletePhoto } from "../../store/photos.js";
+import { getFaves } from "../../store/faves";
+// import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 
-const MyPhotoDetail = () => {
+const MyFaveDetail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getPhotos());
-    }, [dispatch]);
+  const sessionUser = useSelector((state) => state.session.user);
+  let faves = useSelector((state) => state.faves);
+  faves = Object.values(faves);
+
+  useEffect(() => {
+    dispatch(getFaves(sessionUser.id));
+  }, [dispatch]);
 
   const { photoId } = useParams();
 
-    let photos = useSelector((state) => state.photos);
-    photos = Object.values(photos);
-    // console.log(photos)
-
-    photos.sort((a, b) => {
-    const keyA = new Date(a.createdAt);
-    const keyB = new Date(b.createdAt);
-    return keyA > keyB ? -1 : 1;
-    });
-
-  const sessionUser = useSelector((state) => state.session.user);
-
-  const photo = photos.find((photo) => photo.id === +photoId);
+  const photo = faves.find((photo) => photo.id === +photoId);
   // console.log("photo", photo);
 
-  const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
+//   const faves = photos.filter((photo) => photo.ownerId === sessionUser.id);
 
-  const index = myPhotos.indexOf(photo);
+  const index = faves.indexOf(photo);
   let date = new Date(photo?.createdAt);
 
   date = date.toDateString();
@@ -52,9 +45,7 @@ const MyPhotoDetail = () => {
 
   //check if the photo belongs to faves of current loggedin user to decide initial value of fav
 
-
-
-  const faves = [];
+//   const faves = [];
   const [fave, setFave] = useState(false);
 
   useEffect(() => {
@@ -67,9 +58,9 @@ const MyPhotoDetail = () => {
   return (
     <div className="main-container ">
       <div className="photo-detail-card">
-        <Link to="/my/photos" className="back-link">
+        <Link to="/my/faves" className="back-link">
           <i className="fa-solid fa-arrow-left" style={{ fontSize: "12px" }} />{" "}
-          Back to My Photos
+          Back to My Faves
         </Link>
         <input
           className="star"
@@ -83,7 +74,7 @@ const MyPhotoDetail = () => {
         {sessionUser && editDeleteLinks}
         <div className="photo-container">
           <Link
-            to={index > 0 ? `/my/photos/${myPhotos[index - 1].id}` : null}
+            to={index > 0 ? `/my/faves/${faves[index - 1].id}` : null}
             className={index > 0 ? "left-right-arrows" : "hidden"}
           >
             <i className="fa-solid fa-chevron-left"></i>
@@ -91,12 +82,12 @@ const MyPhotoDetail = () => {
           <img src={photo?.url} className="photo-detail-img" />
           <Link
             to={
-              index < myPhotos.length - 1
-                ? `/my/photos/${myPhotos[index + 1].id}`
+              index < faves.length - 1
+                ? `/my/faves/${faves[index + 1].id}`
                 : null
             }
             className={
-              index < myPhotos.length - 1 ? "left-right-arrows" : "hidden"
+              index < faves.length - 1 ? "left-right-arrows" : "hidden"
             }
           >
             <i className="fa-solid fa-chevron-right"></i>
@@ -115,4 +106,4 @@ const MyPhotoDetail = () => {
   );
 };
 
-export default MyPhotoDetail;
+export default MyFaveDetail;

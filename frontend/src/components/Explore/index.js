@@ -11,7 +11,15 @@ const Explore = () => {
   const dispatch = useDispatch();
   // const sessionUser = useSelector((state) => state.session.user);
 
-  const photos = useSelector((state) => state.photos.order);
+  const order = useSelector((state) => state.photos.order);
+  let photos = [];
+  Object.keys(order)
+    .sort()
+    .forEach(function (key, i) {
+      photos.push(order[key]);
+    });
+
+  // const photos = useSelector((state) => state.photos.order);
   
   useEffect(() => {
     dispatch(getPhotos());

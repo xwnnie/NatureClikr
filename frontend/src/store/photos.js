@@ -113,7 +113,7 @@ export const deletePhoto = (photoId) => async (dispatch) => {
 
 const initialState = {
   // current: null,
-  order: [],
+  order: {},
 };
 
 
@@ -121,13 +121,15 @@ const photoReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
       const allPhotos = {};
-      action.photos.forEach((photo) => {
+      const order = {};
+      action.photos.forEach((photo, index) => {
           allPhotos[photo.id] = photo;
+          order[index] = photo;
       });
       return {
         ...state,
         ...allPhotos,
-        order: [...action.photos],
+        order: order,
       };
     }
     case CREATE: {
@@ -159,11 +161,20 @@ const photoReducer = (state = initialState, action) => {
     }
     case REMOVE: {
       const newState = {...state};
-      const index = state.order.findIndex(
-        (photo) => photo.id === action.photoId
-      );
+      // const index = state.order.findIndex(
+      //   (photo) => photo.id === action.photoId
+      // );
       delete newState[action.photoId];
-      newState.order.splice(index, 1);
+      // delete newState.order[action.photoId];
+
+      for (const [key, value] of Object.entries(newState.order)) {
+        if (value.id === action.photoId) {
+          delete newState.order[key];
+        }
+      }
+
+
+      // newState.order.splice(index, 1);
 
       return newState
     }

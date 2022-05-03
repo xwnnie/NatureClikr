@@ -13,7 +13,15 @@ import "./MyPhotos.css"
 const MyPhotos = () => {
   const dispatch = useDispatch();
 
-  const photos = useSelector((state) => state.photos.order);
+    const order = useSelector((state) => state.photos.order);
+    let photos = [];
+    Object.keys(order)
+      .sort()
+      .forEach(function (key, i) {
+        photos.push(order[key]);
+      });
+
+//   const photos = useSelector((state) => state.photos.order);
   const sessionUser = useSelector((state) => state.session.user);
 
   //old

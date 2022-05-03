@@ -11,27 +11,27 @@ import "./MyPhotos.css"
 
 
 const MyPhotos = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     let photos = useSelector((state) => state.photos);
     photos = Object.values(photos);
     // console.log(photos)
 
     photos.sort((a, b) => {
-      const keyA = new Date(a.createdAt);
-      const keyB = new Date(b.createdAt);
-      return keyA > keyB ? -1 : 1;
+        const keyA = new Date(a.createdAt);
+        const keyB = new Date(b.createdAt);
+        return keyA > keyB ? -1 : 1;
     });
 
     // console.log(photos);
 
-  const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state.session.user);
 
-  useEffect(() => {
-    dispatch(getPhotos());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(getPhotos());
+    }, [dispatch]);
 
-  const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
+    const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
 //   console.log(myPhotos);
   return (
     <div className="main-container">

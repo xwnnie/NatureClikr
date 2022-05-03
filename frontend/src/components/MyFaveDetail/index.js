@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getFaves } from "../../store/faves";
+import { getFaves, addFave, removeFave } from "../../store/faves";
 // import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
@@ -13,7 +13,7 @@ const MyFaveDetail = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
   let faves = useSelector((state) => state.faves);
-  faves = Object.values(faves);
+  const favePhotos = Object.values(faves);
 
   useEffect(() => {
     dispatch(getFaves(sessionUser.id));
@@ -21,12 +21,12 @@ const MyFaveDetail = () => {
 
   const { photoId } = useParams();
 
-  const photo = faves.find((photo) => photo.id === +photoId);
+  const photo = favePhotos.find((photo) => photo.id === +photoId);
   // console.log("photo", photo);
 
 //   const faves = photos.filter((photo) => photo.ownerId === sessionUser.id);
 
-  const index = faves.indexOf(photo);
+  const index = favePhotos.indexOf(photo);
   let date = new Date(photo?.createdAt);
 
   date = date.toDateString();
@@ -43,17 +43,20 @@ const MyFaveDetail = () => {
     );
   }
 
-  //check if the photo belongs to faves of current loggedin user to decide initial value of fav
+    let isFave = faves[photoId] ? true : false;
+    const [fave, setFave] = useState(isFave);
+    console.log("isFave?", isFave);
 
-//   const faves = [];
-  const [fave, setFave] = useState(false);
-
-  useEffect(() => {
-    if (fave) {
-      faves.push(photo);
-      console.log(faves);
+    const handleCheckboxChange = async (checked) => {
+    if (checked) {
+        setFave(true);
+        dispatch(addFave(sessionUser.id, photoId));
+    } else {
+        setFave(false);
+        dispatch(removeFave(sessionUser.id, photoId));
     }
-  }, [fave]);
+    };
+
 
   return (
     <div className="main-container ">
@@ -66,15 +69,15 @@ const MyFaveDetail = () => {
           className="star"
           type="checkbox"
           name="addFave"
-          checked={fave}
-          onClick={(e) => {
-            setFave(e.target.checked);
+          checked={isFave}
+          onChange={(e) => {
+            handleCheckboxChange(e.target.checked);
           }}
         />
         {sessionUser && editDeleteLinks}
         <div className="photo-container">
           <Link
-            to={index > 0 ? `/my/faves/${faves[index - 1].id}` : null}
+            to={index > 0 ? `/my/faves/${favePhotos[index - 1].id}` : null}
             className={index > 0 ? "left-right-arrows" : "hidden"}
           >
             <i className="fa-solid fa-chevron-left"></i>
@@ -82,12 +85,12 @@ const MyFaveDetail = () => {
           <img src={photo?.url} className="photo-detail-img" />
           <Link
             to={
-              index < faves.length - 1
-                ? `/my/faves/${faves[index + 1].id}`
+              index < favePhotos.length - 1
+                ? `/my/faves/${favePhotos[index + 1].id}`
                 : null
             }
             className={
-              index < faves.length - 1 ? "left-right-arrows" : "hidden"
+              index < favePhotos.length - 1 ? "left-right-arrows" : "hidden"
             }
           >
             <i className="fa-solid fa-chevron-right"></i>

@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getPhotos, deletePhoto } from "../../store/photos.js";
+import { getPhotos } from "../../store/photos.js";
+import { getFaves, addFave, removeFave } from "../../store/faves.js";
+
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 
@@ -39,6 +41,15 @@ const MyPhotoDetail = () => {
   date = date.toDateString();
   // console.log(index)
 
+  let faves = useSelector((state) => state.faves);
+    useEffect(() => {
+    dispatch(getFaves(sessionUser.id));
+    }, [dispatch]);
+
+    let isFave = faves[photoId] ? true : false;
+    const [fave, setFave] = useState(isFave);
+    console.log("isFave?", isFave);
+
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
     // console.log("user matched!");
@@ -50,19 +61,16 @@ const MyPhotoDetail = () => {
     );
   }
 
-  //check if the photo belongs to faves of current loggedin user to decide initial value of fav
-
-
-
-  const faves = [];
-  const [fave, setFave] = useState(false);
-
-  useEffect(() => {
-    if (fave) {
-      faves.push(photo);
-      console.log(faves);
+  const handleCheckboxChange = async (checked) => {
+    if (checked) {
+      setFave(true);
+      dispatch(addFave(sessionUser.id, photoId));
+    } else {
+      setFave(false);
+      dispatch(removeFave(sessionUser.id, photoId));
     }
-  }, [fave]);
+  };
+  
 
   return (
     <div className="main-container ">
@@ -75,9 +83,9 @@ const MyPhotoDetail = () => {
           className="star"
           type="checkbox"
           name="addFave"
-          checked={fave}
-          onClick={(e) => {
-            setFave(e.target.checked);
+          checked={isFave}
+          onChange={(e) => {
+            handleCheckboxChange(e.target.checked);
           }}
         />
         {sessionUser && editDeleteLinks}

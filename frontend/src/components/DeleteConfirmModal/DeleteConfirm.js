@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 
-const DeleteConfirm = () => {
+const DeleteConfirm = ({ showModal }) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -17,6 +17,7 @@ const DeleteConfirm = () => {
     const deletedPhotoId = await dispatch(deletePhoto(photoId));
     if (deletedPhotoId) {
       history.push(`/`);
+      showModal(false);
     }
   };
 

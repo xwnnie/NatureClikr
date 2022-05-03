@@ -12,7 +12,7 @@ function DeleteConfirmModal({photoId}) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <MyDeleteConfirm photoId={photoId}/>
+          <MyDeleteConfirm photoId={photoId} showModal={setShowModal}/>
         </Modal>
       )}
     </>

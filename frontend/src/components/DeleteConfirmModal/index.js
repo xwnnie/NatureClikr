@@ -12,7 +12,7 @@ function DeleteConfirmModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteConfirm />
+          <DeleteConfirm showModal={setShowModal} />
         </Modal>
       )}
     </>

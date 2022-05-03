@@ -16,9 +16,17 @@ const MyPhotos = () => {
   const photos = useSelector((state) => state.photos.order);
   const sessionUser = useSelector((state) => state.session.user);
 
+  //old
   useEffect(() => {
     dispatch(getPhotos());
   }, [dispatch]);
+
+  //new
+//   useEffect(() => {
+//     dispatch(getPhotos());
+//   }, [dispatch, photos]);
+
+
 
   const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
 //   console.log(myPhotos);

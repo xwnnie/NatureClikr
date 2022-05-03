@@ -13,7 +13,7 @@ function MyPhotoEditModal({ photoId }) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <MyPhotoEditForm photoId={photoId}/>
+          <MyPhotoEditForm photoId={photoId} showModal={setShowModal}/>
         </Modal>
       )}
     </>

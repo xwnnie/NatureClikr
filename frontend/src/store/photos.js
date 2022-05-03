@@ -112,7 +112,7 @@ export const deletePhoto = (photoId) => async (dispatch) => {
 
 
 const initialState = {
-  current: null,
+  // current: null,
   order: [],
 };
 

@@ -15,13 +15,17 @@ const PhotoDetail = () => {
 
   const { photoId } = useParams();
 
-    const order = useSelector((state) => state.photos.order);
-    let photos = [];
-    Object.keys(order)
-      .sort()
-      .forEach(function (key, i) {
-        photos.push(order[key]);
-      });
+  let photos = useSelector((state) => state.photos);
+  photos = Object.values(photos);
+  // console.log(photos)
+
+  photos.sort((a, b) => {
+    const keyA = new Date(a.createdAt);
+    const keyB = new Date(b.createdAt);
+    // console.log(keyA)
+    // console.log(keyB)
+    return keyA > keyB ? -1 : 1;
+  });
   // const photos = useSelector((state) => state.photos.order);
   const sessionUser = useSelector((state) => state.session.user);
 

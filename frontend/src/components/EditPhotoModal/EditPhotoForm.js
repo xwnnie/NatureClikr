@@ -13,7 +13,18 @@ const EditPhotoForm = ({ showModal }) => {
 
     const { photoId } = useParams();
 
-    const photos = useSelector((state) => state.photos.order);
+    // const photos = useSelector((state) => state.photos.order);
+    let photos = useSelector((state) => state.photos);
+    photos = Object.values(photos);
+    // console.log(photos)
+
+    photos.sort((a, b) => {
+      const keyA = new Date(a.createdAt);
+      const keyB = new Date(b.createdAt);
+      // console.log(keyA)
+      // console.log(keyB)
+      return keyA > keyB ? -1 : 1;
+    });
     const photo = photos.find((photo) => photo.id === +photoId);
 
   const [selectedPhoto, setSelectedPhoto] = useState(photo);

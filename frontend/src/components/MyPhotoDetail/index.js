@@ -6,9 +6,9 @@ import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 
-import "./PhotoDetail.css";
+// import "./PhotoDetail.css";
 
-const PhotoDetail = () => {
+const MyPhotoDetail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -18,7 +18,18 @@ const PhotoDetail = () => {
 
   const { photoId } = useParams();
 
-  const photos = useSelector((state) => state.photos.order);
+    let photos = useSelector((state) => state.photos);
+    photos = Object.values(photos);
+    // console.log(photos)
+
+    photos.sort((a, b) => {
+    const keyA = new Date(a.createdAt);
+    const keyB = new Date(b.createdAt);
+    // console.log(keyA)
+    // console.log(keyB)
+    return keyA > keyB ? -1 : 1;
+    });
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const photo = photos.find((photo) => photo.id === +photoId);
@@ -58,9 +69,9 @@ const PhotoDetail = () => {
   return (
     <div className="main-container ">
       <div className="photo-detail-card">
-        <Link to="/" className="back-link">
+        <Link to="/my/photos" className="back-link">
           <i className="fa-solid fa-arrow-left" style={{ fontSize: "12px" }} />{" "}
-          Back To Explore
+          Back to My Photos
         </Link>
         <input
           className="star"
@@ -112,4 +123,4 @@ const PhotoDetail = () => {
   );
 };
 
-export default PhotoDetail;
+export default MyPhotoDetail;

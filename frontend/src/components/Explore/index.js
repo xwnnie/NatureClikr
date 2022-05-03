@@ -10,14 +10,27 @@ const Explore = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   // const sessionUser = useSelector((state) => state.session.user);
+  let photos = useSelector((state) => state.photos);
+  photos = Object.values(photos);
+  // console.log(photos)
 
-  const order = useSelector((state) => state.photos.order);
-  let photos = [];
-  Object.keys(order)
-    .sort()
-    .forEach(function (key, i) {
-      photos.push(order[key]);
-    });
+  photos.sort((a, b) => {
+    const keyA = new Date(a.createdAt);
+    const keyB = new Date(b.createdAt);
+    // console.log(keyA)
+    // console.log(keyB)
+    return keyA > keyB ? -1 : 1;
+  });
+  // photos = photos.sort((a, b) => b.id - a.id);
+  console.log(photos);
+
+  // const order = useSelector((state) => state.photos.order);
+  // let photos = [];
+  // Object.keys(order)
+  //   .sort()
+  //   .forEach(function (key, i) {
+  //     photos.push(order[key]);
+  //   });
 
   // const photos = useSelector((state) => state.photos.order);
   

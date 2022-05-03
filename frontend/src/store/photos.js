@@ -108,12 +108,9 @@ export const deletePhoto = (photoId) => async (dispatch) => {
 };
 
 
-
-
-
 const initialState = {
   // current: null,
-  order: {},
+  // order: {},
 };
 
 
@@ -121,15 +118,15 @@ const photoReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
       const allPhotos = {};
-      const order = {};
+      // const order = {};
       action.photos.forEach((photo, index) => {
           allPhotos[photo.id] = photo;
-          order[index] = photo;
+          // order[index] = photo;
       });
       return {
         ...state,
         ...allPhotos,
-        order: order,
+        // order: order,
       };
     }
     case CREATE: {
@@ -138,7 +135,7 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         newPhoto,
-        order: [...state.order, newPhoto],
+        // order: [...state.order, newPhoto],
       };
     }
 
@@ -149,14 +146,14 @@ const photoReducer = (state = initialState, action) => {
     //   }
     // }
     case UPDATE: {
-      const index = state.order.findIndex(
-        (photo) => photo.id === action.photo.id
-      );
+      // const index = state.order.findIndex(
+      //   (photo) => photo.id === action.photo.id
+      // );
       const newState = {
         ...state,
         [action.photo.id]: action.photo,
       };
-      newState.order[index] = action.photo;
+      // newState.order[index] = action.photo;
       return newState;
     }
     case REMOVE: {
@@ -167,11 +164,11 @@ const photoReducer = (state = initialState, action) => {
       delete newState[action.photoId];
       // delete newState.order[action.photoId];
 
-      for (const [key, value] of Object.entries(newState.order)) {
-        if (value.id === action.photoId) {
-          delete newState.order[key];
-        }
-      }
+      // for (const [key, value] of Object.entries(newState.order)) {
+      //   if (value.id === action.photoId) {
+      //     delete newState.order[key];
+      //   }
+      // }
 
 
       // newState.order.splice(index, 1);

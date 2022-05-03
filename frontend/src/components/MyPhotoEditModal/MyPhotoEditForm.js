@@ -14,7 +14,15 @@ const MyPhotoEditForm = ({photoId}) => {
 //   const { photoId } = useParams();
     // console.log(photoId)
 
-  const photos = useSelector((state) => state.photos.order);
+    let photos = useSelector((state) => state.photos);
+    photos = Object.values(photos);
+    // console.log(photos)
+
+    photos.sort((a, b) => {
+      const keyA = new Date(a.createdAt);
+      const keyB = new Date(b.createdAt);
+      return keyA > keyB ? -1 : 1;
+    });
   const photo = photos.find((photo) => photo.id === +photoId);
 
   const [selectedPhoto, setSelectedPhoto] = useState(photo);
@@ -49,11 +57,11 @@ const MyPhotoEditForm = ({photoId}) => {
 
     let newPhoto = await dispatch(editPhoto(payload));
     console.log(newPhoto);
-    // if (newPhoto) {
-      history.push(`/photos/${photoId}`);
+    if (newPhoto) {
+      history.push(`/my/photos/${photoId}`);
       // URL.revokeObjectURL(photoURL);
       // hideForm();
-    // }
+    }
   };
 
   return (

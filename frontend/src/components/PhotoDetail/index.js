@@ -3,7 +3,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos } from "../../store/photos.js";
-import { getFaves } from "../../store/faves.js";
+import { getFaves, addFave } from "../../store/faves.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 
@@ -72,6 +72,10 @@ const PhotoDetail = () => {
       console.log("check?", fave);
     }
   }, [fave]);
+
+  const handleCheckboxChange = async () => {
+    dispatch(addFave(sessionUser.id, photoId))
+  }
 
   return (
     <div className="main-container ">

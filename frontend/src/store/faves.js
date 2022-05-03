@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = "faves/LOAD";
-const CREATE = "faves/CREATE";
+const ADD = "faves/ADD";
 const REMOVE = "faves/REMOVE";
 
 const load = (favePhotos) => ({
@@ -9,8 +9,8 @@ const load = (favePhotos) => ({
   favePhotos,
 });
 
-const create = (photo) => ({
-  type: CREATE,
+const add = (photo) => ({
+  type: ADD,
   photo,
 });
 
@@ -32,6 +32,38 @@ export const getFaves = (userId) => async (dispatch) => {
   }
 };
 
+export const addFave = (userId, photoId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/users/${userId}/photos/${photoId}/fave`, {
+        method: "POST",
+        // body: JSON.stringify({})
+    });
+
+    if (response.ok) {
+        const resBody = await response.json();
+        dispatch(add(resBody.photo));
+    } else {
+        const errors = await response.json();
+        console.log(errors.errors);
+    }
+}
+
+export const removeFave = (userId, photoId) => async (dispatch) => {
+  const response = await csrfFetch(
+    `/api/users/${userId}/photos/${photoId}/fave`,
+    {
+      method: "DELETE",
+    //   body: JSON.stringify({}),
+    }
+  );
+
+  if (response.ok) {
+    dispatch(remove(photoId));
+  } else {
+    const errors = await response.json();
+    console.log(errors.errors);
+  }
+};
+
 const initialState = {
 
 };
@@ -43,11 +75,21 @@ const faveReducer = (state = initialState, action) => {
         action.favePhotos.forEach((photo) => {
           allFavePhotos[photo.id] = photo;
         });
-
         return {
           ...state,
           ...allFavePhotos,
         };
+      }
+      case ADD: {
+          return {
+            ...state, 
+            [action.photo.id]: action.photo
+          }
+      }
+      case REMOVE: {
+          const newState = {...state}
+          delete newState[action.photoId]
+          return newState
       }
       default:
         return state;

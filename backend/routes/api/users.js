@@ -118,9 +118,11 @@ router.post(
   asyncHandler(async (req, res) => {
     const faveUserId = parseInt(req.params.userId, 10);
     const photoId = parseInt(req.params.photoId, 10);
-
+    
     await Fave.create({ faveUserId, photoId });
-    res.json({ message: "success" });
+
+    const photo = await Photo.findByPk(photoId);
+    res.json({ message: "success", photo });
   })
 );
 

@@ -54,6 +54,7 @@ const MyFaveDetail = () => {
     } else {
         setFave(false);
         dispatch(removeFave(sessionUser.id, photoId));
+        history.push("/my/faves");
     }
     };
 

@@ -12,6 +12,7 @@ import MyPhotos from "./components/MyPhotos";
 import MyFaves from "./components/MyFaves";
 import MyFaveDetail from "./components/MyFaveDetail";
 import Footbar from "./components/Footbar";
+import SearchResult from "./components/SearchResult";
 // import Upload from "./components/Upload";
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/photos/:photoId">
             <PhotoDetail />
+          </Route>
+          <Route path="/search/:searchQuery">
+            <SearchResult />
           </Route>
         </Switch>
       )}

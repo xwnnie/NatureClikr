@@ -12,7 +12,7 @@ const { Photo, User, Fave } = require("../../db/models");
 
 //get all photos
 router.get("/", asyncHandler(async (req, res) => {
-    const photos = await Photo.findAll({ order: [["createdAt", "DESC"]] });
+    const photos = await Photo.findAll({ order: [["createdAt", "DESC"]], include: [User] });
     return res.json(photos);
 }))
 

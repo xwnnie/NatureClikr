@@ -12,11 +12,10 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const history = useHistory();
-  
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [showResult, setShowResult] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

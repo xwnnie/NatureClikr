@@ -85,7 +85,7 @@ router.get(
 
     const photos = await Photo.findAll({
       include: 
-        {model: Fave, where: {faveUserId}},
+        [{model: Fave, where: {faveUserId}}, User]
     });
 
     return res.json({

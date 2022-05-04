@@ -112,7 +112,7 @@ const MyPhotoDetail = () => {
         </div>
         <div className="photo-caption">
           <h3 className="">{photo?.name}</h3>
-          <p className="">Author: {photo?.ownerId}</p>
+          <p className="">Author: {photo?.User.username}</p>
           <p className="">{date}</p>
           <p className="">{photo?.location}</p>
           <p className="">{photo?.description}</p>

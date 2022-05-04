@@ -1,6 +1,6 @@
 .splash-container {
     height: 100vh;
-    animation: bgfade 20s alternate linear infinite 0s;
+    animation: bgfade 15s alternate linear infinite 0s;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

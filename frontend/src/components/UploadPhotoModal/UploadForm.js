@@ -11,41 +11,51 @@ const Upload = ({showModal}) => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [photoURL, setPhotoURL] = useState("");
+  const [image, setImage] = useState(null);
+  // const [photoURL, setPhotoURL] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [errors, setErrors] = useState([]);
 
-  useEffect(() => {
-    if (!selectedPhoto) return;
-    setPhotoURL(URL.createObjectURL(selectedPhoto));
-  }, [selectedPhoto])
+  // useEffect(() => {
+  //   if (!selectedPhoto) return;
+  //   setPhotoURL(URL.createObjectURL(selectedPhoto));
+  // }, [selectedPhoto])
 
-  const onPhotoChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      setSelectedPhoto(img);
-    }
+  const onPhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      url: photoURL,
-      name,
-      location,
-      description,
-      ownerId: sessionUser.id
-    };
+    // const payload = {
+    //   url: photoURL,
+    //   name,
+    //   location,
+    //   description,
+    //   ownerId: sessionUser.id
+    // };
 
-    let newPhoto = await dispatch(uploadPhoto(payload));
+    let newPhoto = await dispatch(uploadPhoto({
+        name,
+        location,
+        description,
+        ownerId: sessionUser.id,
+        image,
+      }))
+
+    setName("");
+    setLocation("");
+    setDescription("");
+    setImage(null);
+
+    // let newPhoto = await dispatch(uploadPhoto(payload));
     console.log(newPhoto);
     if (newPhoto) {
       history.push(`/photos/${newPhoto.id}`);
-      // URL.revokeObjectURL(photoURL);
-      // hideForm();
       showModal(false);
     }
   };
@@ -59,7 +69,7 @@ const Upload = ({showModal}) => {
     <div className="upload-form">
       <h1>Upload your photo</h1>
       <form onSubmit={handleSubmit}>
-        <img src={photoURL} id="select-photo-img"/>
+        {/* <img src={image} id="select-photo-img"/> */}
         <div>
           <label For="photo" />
           Select Photo*
@@ -73,6 +83,7 @@ const Upload = ({showModal}) => {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="name*"
           />
         </div>
         <div>

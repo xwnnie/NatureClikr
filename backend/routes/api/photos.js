@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 const { requireAuth } = require("../../utils/auth");
 const { check, validationResult } = require("express-validator");
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 const router = express.Router();
 //routes for uploading, deleting photos, view single photos
@@ -33,18 +34,29 @@ const validatePhoto = [
     .withMessage("Name cannot be empty.")
     .isLength({ max: 200 })
     .withMessage("Name cannot be more than 200 characters long"),
-  check("url")
-    .exists({ checkFalsy: true })
-    .withMessage("Please upload an image."),
+  // check("photo")
+  //   .exists({ checkFalsy: true })
+  //   .withMessage("Please upload an image."),
 ];
 
 //post a photo
 router.post(
   "/",
+  singleMulterUpload("image"),
   validatePhoto,
   asyncHandler(async (req, res) => {
-    const photo = await Photo.build(req.body);
+    const {name, ownerId, description, location} = req.body;
+    const imageUrl = await singlePublicFileUpload(req.file);
+    console.log("imageUrl", imageUrl);
     const validatorErrors = validationResult(req);
+
+    const photo = await Photo.build({
+      name,
+      ownerId,
+      description,
+      location,
+      url: imageUrl,
+    });
 
     if (validatorErrors.isEmpty()) {
       await photo.save();

@@ -1,5 +1,11 @@
 .auth-form {
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 40px;
+    width: 350px;
+}
+
+.auth-form > input {
+    margin-bottom: 10px;
+    height: 30px;
 }

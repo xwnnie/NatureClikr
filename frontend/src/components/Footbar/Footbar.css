@@ -1,0 +1,26 @@
+.footbar {
+    position: fixed;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    /* background-color: #212124; */
+    background-color: #012020;
+    color: rgb(228, 222, 222);
+    text-align: center;
+    padding-top: 10px;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+.footbar a{
+    color: rgb(228, 222, 222);
+    text-align: center;
+    margin-left: 3px;
+    padding-top: 1px;
+}
+
+.footbar div{
+    margin-right: 6px;
+}

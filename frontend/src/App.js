@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import MyPhotos from "./components/MyPhotos";
 import MyFaves from "./components/MyFaves";
 import MyFaveDetail from "./components/MyFaveDetail";
+import Footbar from "./components/Footbar";
 // import Upload from "./components/Upload";
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footbar />
     </>
   );
 }

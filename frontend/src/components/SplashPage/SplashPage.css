@@ -1,4 +1,43 @@
+.splash-container {
+    height: 100vh;
+    animation: bgfade 20s alternate linear infinite 0s;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+@keyframes bgfade {
+    0% {
+        background-image: url("../../images/splash1.jpg");
+        animation-timing-function: ease-in;
+    }
+    50% {
+        background-image: url("../../images/splash2.jpg");
+        animation-timing-function: ease-out;
+    }
+    100% {
+        background-image: url("../../images/splash3.jpg");
+    }
+}
+
+#splash-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.3;
+}
+
 .center-text {
+    color: white;
     margin-top: 60px;
     display: flex;
     flex-direction: column;

@@ -4,6 +4,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
 import DemoUser from "../DemoUser";
+import "./LoginForm.css";
 
 // css: SignupForm.css
 
@@ -27,35 +28,35 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="auth-form">
       <div>
-        <div>
+        <div className="login-signup-logo">
           <GiMountainCave />
         </div>
-        <h3>Log in to NatureClikr</h3>
+        <h3 className="login-signup-msg">Log in to NatureClikr</h3>
       </div>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit" className="">
+      {/* <label>Username or Email</label> */}
+      <input
+        type="text"
+        value={credential}
+        onChange={(e) => setCredential(e.target.value)}
+        placeholder="Username or Email"
+        required
+      />
+
+      {/* <label>Password</label> */}
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        required
+      />
+
+      <button type="submit" className="login-signup-btn">
         Log In
       </button>
       <DemoUser />

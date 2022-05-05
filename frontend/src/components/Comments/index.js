@@ -79,7 +79,7 @@ const Comments = () => {
             {sessionUser.id === comment?.userId ? (
               <DeleteCommentModal commentId={comment?.id} />
             ) : null}
-            {console.log("comment", comment)}
+            {/* {console.log("comment", comment)} */}
           </div>
         ))}
       </div>

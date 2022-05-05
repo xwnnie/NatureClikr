@@ -133,7 +133,7 @@ router.post(
     if (validatorErrors.isEmpty()) {
       await comment.save();
       comment = await Comment.findByPk(comment.id, {include: User});
-      console.log("********", comment);
+      // console.log("********", comment);
       res.json(comment);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);

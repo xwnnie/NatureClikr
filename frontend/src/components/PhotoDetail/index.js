@@ -116,10 +116,10 @@ const PhotoDetail = () => {
         </div> */}
         <div className="photo-caption">
           <h3 className="">{photo?.name}</h3>
-          <p className="">Author: {photo?.User.username}</p>
-          <p className="">{date}</p>
-          <p className="">{photo?.location}</p>
-          <p className="">{photo?.description}</p>
+          <p className="">Author: {photo?.User.displayName}</p>
+          <p className="">Uploaded on: {date}</p>
+          <p className="">Photo taken at: {photo?.location}</p>
+          <p className="">Description: {photo?.description}</p>
         </div>
       </div>
       {/* <Comment photo={photo} /> */}

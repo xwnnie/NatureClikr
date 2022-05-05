@@ -15,12 +15,27 @@
 }
 
 .footbar a{
-    color: rgb(228, 222, 222);
+    color: white;
     text-align: center;
     margin-left: 3px;
     padding-top: 1px;
+    padding-left: 3px;
 }
 
 .footbar div{
     margin-right: 6px;
+    color: white
+}
+
+#techs {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    margin-top: 1px;
+    margin-right: 150px;
+}
+
+#techs li{
+    margin: 0px 10px;
+    font-size: 14px;
 }

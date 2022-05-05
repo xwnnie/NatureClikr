@@ -58,34 +58,18 @@ const EditPhotoForm = ({ showModal }) => {
       ownerId: sessionUser.id,
     };
 
-    // dispatch(editPhoto(payload));
-
     let newPhoto = await dispatch(editPhoto(payload));
     
-    // console.log(newPhoto);
     if (newPhoto) {
       history.push(`/photos/${newPhoto.id}`);
-      // URL.revokeObjectURL(photoURL);
-      // hideForm();
       showModal(false);
     }
   };
-
-//   const handleCancelClick = (e) => {
-//     e.preventDefault();
-//     history.push(`/`);
-//   };
 
   return (
     <div className="upload-form edit-form">
       <h3>Update Photo Info</h3>
       <form onSubmit={handleSubmit}>
-        {/* <img src={photoURL} id="select-photo-img" />
-        <div>
-          <label For="photo" />
-          Select Photo*
-          <input type="file" name="photo" onChange={onPhotoChange} />
-        </div> */}
         <div>
           <label For="name" />
           Name*
@@ -115,9 +99,6 @@ const EditPhotoForm = ({ showModal }) => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        {/* <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button> */}
         <button type="submit">Update</button>
       </form>
     </div>

@@ -10,7 +10,6 @@ import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 import Comments from "../Comments/index.js";
 
 const MyPhotoDetail = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,7 +20,6 @@ const MyPhotoDetail = () => {
 
     let photos = useSelector((state) => state.photos);
     photos = Object.values(photos);
-    // console.log(photos)
 
     photos.sort((a, b) => {
     const keyA = new Date(a.createdAt);
@@ -32,7 +30,6 @@ const MyPhotoDetail = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const photo = photos.find((photo) => photo.id === +photoId);
-  // console.log("photo", photo);
 
   const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
 
@@ -40,7 +37,6 @@ const MyPhotoDetail = () => {
   let date = new Date(photo?.createdAt);
 
   date = date.toDateString();
-  // console.log(index)
 
   let faves = useSelector((state) => state.faves);
     useEffect(() => {
@@ -53,7 +49,6 @@ const MyPhotoDetail = () => {
 
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
-    // console.log("user matched!");
     editDeleteLinks = (
       <div>
         <EditPhotoModal />

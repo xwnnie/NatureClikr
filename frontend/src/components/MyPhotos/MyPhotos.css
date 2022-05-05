@@ -39,21 +39,10 @@
     cursor: pointer;
     /* display: none; */
 }
-/* #my-edit-link {
-    position: absolute;
-    top: 30%
-}
-#my-delete-link {
-    position: absolute;
-    bottom: 30%
-} */
+
 .edit-delete-modal-btn:hover + .my-img, .my-img:hover {
     opacity: 0.8;
 }
-
-/* .my-img:hover {
-    opacity: 0.8;
-} */
 
 .my-img:hover + .edit-delete-modal-btn, .edit-delete-modal-btn:hover {
     visibility: visible;

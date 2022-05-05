@@ -21,7 +21,6 @@ const remove = (photoId) => ({
 
 export const getFaves = (userId) => async (dispatch) => {
   const response = await csrfFetch(`/api/users/${userId}/faves`);
-  //   console.log(response)
 
   if (response.ok) {
     const favePhotos = await response.json();
@@ -35,7 +34,6 @@ export const getFaves = (userId) => async (dispatch) => {
 export const addFave = (userId, photoId) => async (dispatch) => {
     const response = await csrfFetch(`/api/users/${userId}/photos/${photoId}/fave`, {
         method: "POST",
-        // body: JSON.stringify({})
     });
 
     if (response.ok) {
@@ -52,7 +50,6 @@ export const removeFave = (userId, photoId) => async (dispatch) => {
     `/api/users/${userId}/photos/${photoId}/fave`,
     {
       method: "DELETE",
-    //   body: JSON.stringify({}),
     }
   );
 

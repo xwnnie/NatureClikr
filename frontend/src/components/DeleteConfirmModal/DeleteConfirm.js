@@ -10,10 +10,7 @@ const DeleteConfirm = ({ showModal }) => {
     const dispatch = useDispatch();
 
     const { photoId } = useParams();
-
-    // const photos = useSelector((state) => state.photos.order);
-    // const photo = photos.find((photo) => photo.id === +photoId);
-
+    
   const deleteCurrentPhoto = async () => {
     const deletedPhotoId = await dispatch(deletePhoto(photoId));
     if (deletedPhotoId) {

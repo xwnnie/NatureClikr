@@ -38,7 +38,6 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      {/* <label>Username or Email</label> */}
       <input
         type="text"
         value={credential}
@@ -46,8 +45,6 @@ function LoginForm() {
         placeholder="Username or Email"
         required
       />
-
-      {/* <label>Password</label> */}
       <input
         type="password"
         value={password}

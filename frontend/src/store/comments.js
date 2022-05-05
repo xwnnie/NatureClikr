@@ -22,7 +22,6 @@ const removeComment = (commentId) => ({
 
 export const getComments = (photoId) => async (dispatch) => {
   const response = await csrfFetch(`/api/comments`);
-  //   console.log(response)
 
   if (response.ok) {
     const comments = await response.json();
@@ -34,7 +33,7 @@ export const getComments = (photoId) => async (dispatch) => {
 };
 
 export const addComment = (data) => async (dispatch) => {
-  const { userId, photoId, content } = data;
+  const { photoId } = data;
 
   const response = await csrfFetch(`/api/photos/${photoId}/comments`, {
     method: "POST",
@@ -76,7 +75,6 @@ const commentReducer = (state = initialState, action) => {
   switch (action.type) {
       case LOAD: {
         const newState = { ...state };
-        // newState.current[action.photo.id] = action.photo;
         action.comments.forEach(comment => {
           newState[comment.id] = comment;
         })

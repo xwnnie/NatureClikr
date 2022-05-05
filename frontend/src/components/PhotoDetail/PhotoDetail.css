@@ -20,7 +20,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* flex-direction: column; */
     margin: auto;
     padding-top: 15px;
     padding: 10px;
@@ -28,13 +27,10 @@
 }
 .photo-detail-img {
     max-width: 80%;
-    /* flex-grow: 1.5; */
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-top: 40px;
     border-radius: 5px;
     margin: auto;
-    /* max-height: 800px; */
-    /* height: 650px; */
 }
 
 .left-right-arrows {
@@ -46,8 +42,6 @@
 }
 
 .photo-caption {
-    /* font-weight: 300; */
-    /* margin-left: 10%; */
     padding-bottom: 30px;
 }
 .photo-caption h3 {
@@ -74,7 +68,6 @@
     position: absolute;
     right: 5.5%;
     top:  45px;
-    /* top: 130px; */
     visibility: visible;
     color: yellow;
     text-shadow: 0 0 7px #fff,

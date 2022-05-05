@@ -23,19 +23,14 @@ const MyFaveDetail = () => {
   const { photoId } = useParams();
 
   const photo = favePhotos.find((photo) => photo.id === +photoId);
-  // console.log("photo", photo);
-
-//   const faves = photos.filter((photo) => photo.ownerId === sessionUser.id);
 
   const index = favePhotos.indexOf(photo);
   let date = new Date(photo?.createdAt);
 
   date = date.toDateString();
-  // console.log(index)
 
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
-    // console.log("user matched!");
     editDeleteLinks = (
       <div>
         <EditPhotoModal />
@@ -46,7 +41,6 @@ const MyFaveDetail = () => {
 
     let isFave = faves[photoId] ? true : false;
     const [fave, setFave] = useState(isFave);
-    // console.log("isFave?", isFave);
 
     const handleCheckboxChange = async (checked) => {
     if (checked) {

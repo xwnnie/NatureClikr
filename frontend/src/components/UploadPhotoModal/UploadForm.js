@@ -12,16 +12,10 @@ const Upload = ({showModal}) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const [image, setImage] = useState(null);
-  // const [photoURL, setPhotoURL] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
-
-  // useEffect(() => {
-  //   if (!selectedPhoto) return;
-  //   setPhotoURL(URL.createObjectURL(selectedPhoto));
-  // }, [selectedPhoto])
 
   const onPhotoChange = (e) => {
     const file = e.target.files[0];
@@ -30,14 +24,6 @@ const Upload = ({showModal}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const payload = {
-    //   url: photoURL,
-    //   name,
-    //   location,
-    //   description,
-    //   ownerId: sessionUser.id
-    // };
 
     let newPhoto = await dispatch(uploadPhoto({
         name,
@@ -52,7 +38,6 @@ const Upload = ({showModal}) => {
     setDescription("");
     setImage(null);
 
-    // let newPhoto = await dispatch(uploadPhoto(payload));
     console.log(newPhoto);
     if (newPhoto) {
       history.push(`/photos/${newPhoto.id}`);
@@ -64,7 +49,6 @@ const Upload = ({showModal}) => {
     <div className="upload-form">
       <h1>Upload your photo</h1>
       <form onSubmit={handleSubmit}>
-        {/* <img src={image} id="select-photo-img"/> */}
         <div id="select-photo-div">
           <label For="photo" id="select-photo-label">
             Select a Photo*

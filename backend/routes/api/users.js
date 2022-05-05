@@ -105,8 +105,6 @@ router.get(
       where: { faveUserId, photoId },
     });
 
-    // console.log(fave);
-
     if (fave.length) return res.json({ message: "true" });
     return res.json({ message: "false" });
   })

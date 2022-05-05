@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import "./UserCard.css";
@@ -8,10 +7,8 @@ const UserCard = () => {
   let user = sessionUser;
   let date = new Date(user?.createdAt);
   date = date.getFullYear();
-  // console.log("session", sessionUser)
 
   return (
-    // <div className="main-container">
       <div className="usercard">
         <div className="usercard-text">
           <h1 id="usercard-username">{user?.displayName}</h1>
@@ -22,7 +19,6 @@ const UserCard = () => {
           </div>
         </div>
       </div>
-    // </div>
   );
 };
 

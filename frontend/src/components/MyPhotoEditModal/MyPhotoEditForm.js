@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { editPhoto } from "../../store/photos";
-// import "./Upload.css";
 
 const MyPhotoEditForm = ({photoId}) => {
   const history = useHistory();
@@ -11,12 +10,8 @@ const MyPhotoEditForm = ({photoId}) => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-//   const { photoId } = useParams();
-    // console.log(photoId)
-
     let photos = useSelector((state) => state.photos);
     photos = Object.values(photos);
-    // console.log(photos)
 
     photos.sort((a, b) => {
       const keyA = new Date(a.createdAt);
@@ -33,7 +28,6 @@ const MyPhotoEditForm = ({photoId}) => {
 
   useEffect(() => {
     if (!selectedPhoto) return;
-    // setPhotoURL(URL.createObjectURL(selectedPhoto));
   }, [selectedPhoto]);
 
   const onPhotoChange = (event) => {
@@ -59,8 +53,6 @@ const MyPhotoEditForm = ({photoId}) => {
     console.log(newPhoto);
     if (newPhoto) {
       history.push(`/my/photos/${photoId}`);
-      // URL.revokeObjectURL(photoURL);
-      // hideForm();
     }
   };
 
@@ -68,12 +60,6 @@ const MyPhotoEditForm = ({photoId}) => {
     <div className="upload-form edit-form ">
       <h3>Update Photo Info</h3>
       <form onSubmit={handleSubmit}>
-        {/* <img src={photoURL} id="select-photo-img" />
-        <div>
-          <label For="photo" />
-          Select Photo*
-          <input type="file" name="photo" onChange={onPhotoChange} />
-        </div> */}
         <div>
           <input
             type="text"
@@ -100,9 +86,6 @@ const MyPhotoEditForm = ({photoId}) => {
             placeholder="Description"
           />
         </div>
-        {/* <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button> */}
         <button type="submit">Update</button>
       </form>
     </div>

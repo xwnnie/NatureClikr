@@ -1,15 +1,14 @@
-// import photos from "../../data/photos-raw.js";
-import "./Explore.css";
-// import Gallery from "react-photo-gallery";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getPhotos } from "../../store/photos";
 
+import "./Explore.css";
+
 const Explore = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  // const sessionUser = useSelector((state) => state.session.user);
+  
   let photos = useSelector((state) => state.photos);
   photos = Object.values(photos);
   // console.log(photos)
@@ -19,8 +18,6 @@ const Explore = () => {
     const keyB = new Date(b?.createdAt);
     return keyA > keyB ? -1 : 1;
   });
-  // photos = photos.sort((a, b) => b.id - a.id);
-  // console.log(photos);
 
   useEffect(() => {
     dispatch(getPhotos());
@@ -40,7 +37,6 @@ const Explore = () => {
               onClick={() => {
                 redirectToPhoto(photo);
               }}
-              // className="grid-image"
               key={photo?.id}
               src={photo?.url}
               alt={photo?.name}

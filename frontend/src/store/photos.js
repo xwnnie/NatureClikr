@@ -1,5 +1,5 @@
 import { csrfFetch } from "./csrf";
-//get all photos
+
 const LOAD = "photos/LOAD";
 const CREATE = "photos/CREATE";
 const UPDATE = "photos/UPDATE";
@@ -28,7 +28,6 @@ const remove = (photoId) => ({
 
 export const getPhotos = () => async (dispatch) => {
   const response = await csrfFetch(`/api/photos`);
-//   console.log(response)
 
   if (response.ok) {
     const photos = await response.json();
@@ -101,8 +100,6 @@ export const deletePhoto = (photoId) => async (dispatch) => {
 
 
 const initialState = {
-  // current: null,
-  // order: {},
 };
 
 
@@ -110,18 +107,12 @@ const photoReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
       const allPhotos = {};
-      // const order = {};
       action.photos.forEach((photo) => {
-          // photo.Comments.forEach(comment => {
-          //   photo.Comments[comment.id] = comment;
-          // })
           allPhotos[photo.id] = photo;
-          // order[index] = photo;
       });
       return {
         ...state,
         ...allPhotos,
-        // order: order,
       };
     }
     case CREATE: {
@@ -130,19 +121,14 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         newPhoto,
-        // order: [...state.order, newPhoto],
       };
     }
 
     case UPDATE: {
-      // const index = state.order.findIndex(
-      //   (photo) => photo.id === action.photo.id
-      // );
       const newState = {
         ...state,
         [action.photo.id]: action.photo,
       };
-      // newState.order[index] = action.photo;
       return newState;
     }
     case REMOVE: {

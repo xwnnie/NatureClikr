@@ -1,6 +1,4 @@
-/* TODO Add site wide styles */
 .main-container {
-    /* min-width: 60%; */
     margin: auto;
     margin-top: 50px;
 }
@@ -11,8 +9,6 @@ body {
         helvetica,
         arial,
         sans-serif;
-    /* margin: 0;
-    margin-bottom: 100px; */
     background-color: #f3f5f6;
 }
 

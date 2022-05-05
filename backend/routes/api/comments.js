@@ -12,8 +12,6 @@ const validateComment = [
   check("content")
     .exists({ checkFalsy: true })
     .withMessage("Content cannot be empty."),
-  // .isLength({ max: 200 })
-  // .withMessage("Name cannot be more than 200 characters long"),
 ];
 
 router.get("/", asyncHandler(async (req, res) => {

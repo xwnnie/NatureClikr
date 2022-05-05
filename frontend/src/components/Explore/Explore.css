@@ -14,7 +14,6 @@
 }
 
 .masonry {
-    /* Masonry container */
     column-count: 4;
     column-gap: 10px;
     max-width: 75%;
@@ -63,10 +62,3 @@
         column-count: 2;
     }
 }
-
-/* Masonry on small screens */
-/* @media only screen and (max-width: 767px) and (min-width: 540px) {
-    .masonry {
-        column-count: 2;
-    }
-} */

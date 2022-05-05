@@ -1,5 +1,4 @@
 .upload-form {
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     padding: 40px;
@@ -9,7 +8,6 @@
     margin-bottom: 10px;
     height: 30px;
     width: 341px;
-    /* margin-right: 15px; */
 }
 
 .upload-form textarea {
@@ -37,7 +35,6 @@
 
 #select-photo-label {
     font-size: 12px;
-    /* display: inline-block; */
 }
 
 #select-photo-img {

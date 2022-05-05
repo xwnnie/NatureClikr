@@ -12,24 +12,20 @@ import "./PhotoDetail.css";
 
 
 const PhotoDetail = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const { photoId } = useParams();
 
   let photos = useSelector((state) => state.photos);
   photos = Object.values(photos);
-  // console.log(photos)
 
   photos.sort((a, b) => {
     const keyA = new Date(a?.createdAt);
     const keyB = new Date(b?.createdAt);
     return keyA > keyB ? -1 : 1;
   });
-  // const photos = useSelector((state) => state.photos.order);
   const sessionUser = useSelector((state) => state.session.user);
   const photo = photos.find(photo => photo.id === +photoId);
-  // console.log("photo", photo);
   let faves = useSelector((state) => state.faves);
 
   useEffect(() => {
@@ -48,7 +44,6 @@ const PhotoDetail = () => {
   
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
-    // console.log("user matched!");
     editDeleteLinks = (
       <div>
         <EditPhotoModal />
@@ -59,7 +54,6 @@ const PhotoDetail = () => {
 
   let isFave = faves[photoId] ? true : false;
   const [fave, setFave] = useState(isFave);
-  // console.log("isFave?", isFave)
 
   const handleCheckboxChange = async (checked) => {
     if (checked) {
@@ -93,7 +87,6 @@ const PhotoDetail = () => {
             to={index > 0 ? `/photos/${photos[index - 1].id}` : null}
             className={index > 0 ? "left-right-arrows" : "hidden"}
           >
-            {/* <span>&lt;</span> */}
             <i className="fa-solid fa-chevron-left"></i>
           </Link>
           <img src={photo?.url} className="photo-detail-img" />
@@ -107,14 +100,9 @@ const PhotoDetail = () => {
               index < photos.length - 1 ? "left-right-arrows" : "hidden"
             }
           >
-            {/* <span>&gt;</span> */}
             <i className="fa-solid fa-chevron-right"></i>
           </Link>
         </div>
-        {/* <div className="left-right-arrows">
-          <FaAngleLeft />
-          <FaAngleRight />
-        </div> */}
         <div className="photo-caption">
           <h3 className="">{photo?.name}</h3>
           <p className="">Author: {photo?.User.displayName}</p>

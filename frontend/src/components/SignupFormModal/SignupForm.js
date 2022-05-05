@@ -46,7 +46,6 @@ function SignupForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      {/* <label>Email</label> */}
       <input
         type="text"
         value={email}
@@ -54,8 +53,6 @@ function SignupForm() {
         placeholder="Email"
         required
       />
-
-      {/* <label>Username</label> */}
       <input
         type="text"
         value={username}
@@ -63,8 +60,6 @@ function SignupForm() {
         placeholder="Username"
         required
       />
-
-      {/* <label>Display Name</label> */}
       <input
         type="text"
         value={displayName}
@@ -72,8 +67,6 @@ function SignupForm() {
         placeholder="Display Name"
         required
       />
-
-      {/* <label>Password</label> */}
       <input
         type="password"
         value={password}
@@ -81,8 +74,6 @@ function SignupForm() {
         placeholder="Password"
         required
       />
-
-      {/* <label>Confirm Password</label> */}
       <input
         type="password"
         value={confirmPassword}

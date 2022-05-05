@@ -6,7 +6,6 @@ const { check, validationResult } = require("express-validator");
 const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 const router = express.Router();
-//routes for uploading, deleting photos, view single photos
 
 const { Photo, User, Fave, Comment } = require("../../db/models");
 
@@ -22,9 +21,6 @@ const validatePhoto = [
     .withMessage("Name cannot be empty.")
     .isLength({ max: 200 })
     .withMessage("Name cannot be more than 200 characters long"),
-  // check("photo")
-  //   .exists({ checkFalsy: true })
-  //   .withMessage("Please upload an image."),
 ];
 
 //post a photo
@@ -66,8 +62,6 @@ router.put(
   asyncHandler(async (req, res) => {
     const photoId = parseInt(req.params.id, 10);
     let photo = await Photo.findByPk(photoId);
-    // console.log(".................", req.body)
-    // photo = req.body;
 
     const validatorErrors = validationResult(req);
 
@@ -77,7 +71,6 @@ router.put(
         include: User,
       });
       res.json(newPhoto);
-      // res.json(photo);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.json({
@@ -116,8 +109,6 @@ const validateComment = [
   check("content")
     .exists({ checkFalsy: true })
     .withMessage("Content cannot be empty.")
-    // .isLength({ max: 200 })
-    // .withMessage("Name cannot be more than 200 characters long"),
 ];
 
 router.post(
@@ -133,7 +124,6 @@ router.post(
     if (validatorErrors.isEmpty()) {
       await comment.save();
       comment = await Comment.findByPk(comment.id, {include: User});
-      // console.log("********", comment);
       res.json(comment);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);

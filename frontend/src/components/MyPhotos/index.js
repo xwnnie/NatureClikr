@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos } from "../../store/photos";
-import { getComments } from "../../store/comments";
 import UserCard from "../UserCard";
 import MyPhotoEditModal from "../MyPhotoEditModal";
 import MyDeleteModal from "../MyDeleteModal";
@@ -16,15 +15,12 @@ const MyPhotos = () => {
 
     let photos = useSelector((state) => state.photos);
     photos = Object.values(photos);
-    // console.log(photos)
 
     photos.sort((a, b) => {
         const keyA = new Date(a.createdAt);
         const keyB = new Date(b.createdAt);
         return keyA > keyB ? -1 : 1;
     });
-
-    // console.log(photos);
 
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -33,7 +29,7 @@ const MyPhotos = () => {
     }, [dispatch]);
 
     const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
-//   console.log(myPhotos);
+
   return (
     <div className="main-container">
       <UserCard />

@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getPhotos } from "../../store/photos";
 import { getFaves } from "../../store/faves";
 import UserCard from "../UserCard";
-import MyPhotoEditModal from "../MyPhotoEditModal";
-import MyDeleteModal from "../MyDeleteModal";
 
 // import "./MyPhotos.css";
 
@@ -22,8 +19,6 @@ const MyFaves = () => {
     dispatch(getFaves(sessionUser.id));
   }, [dispatch]);
 
-//   const myPhotos = photos.filter((photo) => photo.ownerId === sessionUser.id);
-  //   console.log(myPhotos);
   return (
     <div className="main-container">
       <UserCard />
@@ -38,8 +33,6 @@ const MyFaves = () => {
               className="my-img"
             />
             <div className="edit-delete-modal-btn">
-              {/* <MyPhotoEditModal photoId={photo?.id} />
-              <MyDeleteModal photoId={photo?.id} /> */}
               <Link to={`/my/faves/${photo.id}`}>
                 <i className="fa-solid fa-comment" id="my-comment-link" />
               </Link>

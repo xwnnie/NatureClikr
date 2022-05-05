@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos } from "../../store/photos.js";
 import { addComment, getComments } from "../../store/comments.js";
-import { getFaves, addFave, removeFave } from "../../store/faves.js";
-import EditPhotoModal from "../EditPhotoModal/index.js";
+
 import DeleteCommentModal from "../DeleteCommentModal/index.js";
 
 import "./Comments.css"
@@ -35,7 +34,6 @@ const Comments = () => {
         const date = new Date(comment.createdAt);
         comment.date = date.toDateString();
     })
-    // console.log(comments);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -53,7 +51,6 @@ const Comments = () => {
 
   return (
     <div className="comments-container">
-      {/* <h2>Comments</h2> */}
       <form onSubmit={handleSubmit}>
         <textarea
           type="text"
@@ -79,7 +76,6 @@ const Comments = () => {
             {sessionUser.id === comment?.userId ? (
               <DeleteCommentModal commentId={comment?.id} />
             ) : null}
-            {/* {console.log("comment", comment)} */}
           </div>
         ))}
       </div>

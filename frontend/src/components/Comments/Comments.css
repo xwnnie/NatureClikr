@@ -6,9 +6,6 @@
     position: relative;
 }
 
-/* #comment-big-div {
-    position: relative;
-} */
 #comment-decor {
     color: green;
     font-size: 15px;
@@ -25,11 +22,7 @@
     margin-left: 10px;
     outline: none;
 }
-/* .comments-container textarea:focus {
-    height: 100px;
-    outline: none;
-    z-index: 0;
-} */
+
 
 #add-comment-btn {
     /* background-color: white; */

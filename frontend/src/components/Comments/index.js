@@ -6,7 +6,9 @@ import { getPhotos } from "../../store/photos.js";
 import { addComment, getComments } from "../../store/comments.js";
 import { getFaves, addFave, removeFave } from "../../store/faves.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
-import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
+import DeleteCommentModal from "../DeleteCommentModal/index.js";
+
+import "./Comments.css"
 
 const Comments = () => {
     const [content, setContent] = useState("");
@@ -28,8 +30,12 @@ const Comments = () => {
 
     let comments = useSelector((state) => state.comments);
     comments = Object.values(comments);
-    comments = comments.filter(comment => comment.photoId === +photoId)
-    console.log(comments);
+    comments = comments.filter(comment => comment.photoId === +photoId);
+    comments.forEach(comment => {
+        const date = new Date(comment.createdAt);
+        comment.date = date.toDateString();
+    })
+    // console.log(comments);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,27 +52,34 @@ const Comments = () => {
 
 
   return (
-    <div>
-      <h2>Comments</h2>
+    <div className="comments-container">
+      {/* <h2>Comments</h2> */}
       <form onSubmit={handleSubmit}>
-        <input
+        <textarea
           type="text"
           name="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="Comment"
+          placeholder="Leave a comment..."
           required
         />
-        <button type="submit" id="upload-confirm-btn">
+        <button type="submit" id="add-comment-btn">
           Add
         </button>
       </form>
       <div>
         {comments.map((comment) => (
           <div className="comment-container" key={comment?.id}>
+            <div>
+              <i className="fa-solid fa-seedling" id="comment-decor" />
+            </div>
             <p>{comment?.content}</p>
-            <p>{comment?.userId}</p>
-            <p>{comment?.createdAt}</p>
+            <span>{comment?.User?.displayName}, </span>
+            <span>{comment?.date}</span>
+            {sessionUser.id === comment?.userId ? (
+              <DeleteCommentModal commentId={comment?.id} />
+            ) : null}
+            {console.log("comment", comment)}
           </div>
         ))}
       </div>

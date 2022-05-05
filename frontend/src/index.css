@@ -16,6 +16,14 @@ body {
     background-color: #f3f5f6;
 }
 
+textarea {
+    font-family: Proxima Nova,
+    helvetica neue,
+    helvetica,
+    arial,
+    sans-serif;
+}
+
 form input:focus {
     outline: none;
 }

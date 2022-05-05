@@ -128,10 +128,12 @@ router.post(
 
     const validatorErrors = validationResult(req);
 
-    const comment = await Comment.build({ userId, photoId, content });
+    let comment = await Comment.build({ userId, photoId, content });
 
     if (validatorErrors.isEmpty()) {
       await comment.save();
+      comment = await Comment.findByPk(comment.id, {include: User});
+      console.log("********", comment);
       res.json(comment);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);

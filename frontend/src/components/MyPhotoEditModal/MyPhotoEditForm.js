@@ -65,42 +65,39 @@ const MyPhotoEditForm = ({photoId}) => {
   };
 
   return (
-    <div className="upload-form">
-      <h3>Update photo</h3>
+    <div className="upload-form edit-form ">
+      <h3>Update Photo Info</h3>
       <form onSubmit={handleSubmit}>
-        <img src={photoURL} id="select-photo-img" />
+        {/* <img src={photoURL} id="select-photo-img" />
         <div>
           <label For="photo" />
           Select Photo*
           <input type="file" name="photo" onChange={onPhotoChange} />
-        </div>
+        </div> */}
         <div>
-          <label For="name" />
-          Name*
           <input
             type="text"
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Name*"
           />
         </div>
         <div>
-          <label For="location" />
-          Location:
           <input
             type="text"
             name="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
+            placeholder="Location"
           />
         </div>
         <div>
-          <label For="description" />
-          Description:
           <textarea
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
           />
         </div>
         {/* <button type="button" onClick={handleCancelClick}>

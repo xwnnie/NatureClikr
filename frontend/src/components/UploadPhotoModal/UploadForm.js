@@ -60,55 +60,41 @@ const Upload = ({showModal}) => {
     }
   };
 
-  const handleCancelClick = (e) => {
-    e.preventDefault();
-    history.push(`/`);
-  };
-
   return (
     <div className="upload-form">
       <h1>Upload your photo</h1>
       <form onSubmit={handleSubmit}>
         {/* <img src={image} id="select-photo-img"/> */}
-        <div>
-          <label For="photo" />
-          Select Photo*
+        <div id="select-photo-div">
+          <label For="photo" id="select-photo-label">
+            Select a Photo*
+          </label>
           <input type="file" name="photo" onChange={onPhotoChange} />
         </div>
-        <div>
-          <label For="name" />
-          Name*
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="name*"
-          />
-        </div>
-        <div>
-          <label For="location" />
-          Location:
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </div>
-        <div>
-          <label For="description" />
-          Description:
-          <textarea
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button>
-        <button type="submit">Upload</button>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="name*"
+          required
+        />
+        <input
+          type="text"
+          name="location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="location"
+        />
+        <textarea
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="description"
+        />
+          <button type="submit" id="upload-confirm-btn">
+            Upload
+          </button>          
       </form>
     </div>
   );

@@ -1,8 +1,43 @@
 .upload-form {
     /* border: 1px solid black; */
-    min-width: 300px;
-    width: 400px;
-    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    width: 350px;
+}
+.upload-form input {
+    margin-bottom: 10px;
+    height: 30px;
+    width: 341px;
+    /* margin-right: 15px; */
+}
+
+.upload-form textarea {
+    margin-bottom: 10px;
+    height: 60px;
+    width: 343.5px;
+}
+
+#upload-confirm-btn {
+    background-color: rgb(250, 166, 8);
+    color: white;
+    border: none;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 50px;
+    margin-left: 288px;
+}
+
+#select-photo-div input{
+    width: 200px;
+    margin-left: 5px
+}
+
+#select-photo-label {
+    font-size: 12px;
+    /* display: inline-block; */
 }
 
 #select-photo-img {

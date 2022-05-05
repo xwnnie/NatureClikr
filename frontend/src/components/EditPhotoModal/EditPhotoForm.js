@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { getPhotos, editPhoto } from "../../store/photos";
-// import "./Upload.css";
+
+import "./EditPhotoForm.css";
 
 const EditPhotoForm = ({ showModal }) => {
   const history = useHistory();
@@ -76,15 +77,15 @@ const EditPhotoForm = ({ showModal }) => {
 //   };
 
   return (
-    <div className="upload-form">
-      <h3>Update photo</h3>
+    <div className="upload-form edit-form">
+      <h3>Update Photo Info</h3>
       <form onSubmit={handleSubmit}>
-        <img src={photoURL} id="select-photo-img" />
+        {/* <img src={photoURL} id="select-photo-img" />
         <div>
           <label For="photo" />
           Select Photo*
           <input type="file" name="photo" onChange={onPhotoChange} />
-        </div>
+        </div> */}
         <div>
           <label For="name" />
           Name*

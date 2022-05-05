@@ -85,7 +85,11 @@ router.put(
 
     if (validatorErrors.isEmpty()) {
       await photo.update(req.body);
-      res.json(photo);
+      const newPhoto = await Photo.findByPk(photoId, {
+        include: User,
+      });
+      res.json(newPhoto);
+      // res.json(photo);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.json({

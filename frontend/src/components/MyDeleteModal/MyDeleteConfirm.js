@@ -23,7 +23,7 @@ const MyDeleteConfirm = ({showModal, photoId}) => {
   };
 
   return (
-    <div className="upload-form">
+    <div className="upload-form delete-form">
       Do you really want to delete this photo?
       <button type="submit" onClick={deleteCurrentPhoto}>
         Yes

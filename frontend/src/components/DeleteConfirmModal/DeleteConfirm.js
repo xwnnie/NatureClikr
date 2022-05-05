@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
+import "./DeleteConfirm.css";
 
 const DeleteConfirm = ({ showModal }) => {
     const history = useHistory();
@@ -22,11 +23,14 @@ const DeleteConfirm = ({ showModal }) => {
   };
 
   return (
-    <div className="upload-form">
+    <div className="delete-form">
       Do you really want to delete this photo?
-      <button type="submit" onClick={deleteCurrentPhoto}>
-        Yes
-      </button>
+      <div>
+        <button type="submit" onClick={deleteCurrentPhoto}>
+          Yes
+        </button>        
+      </div>
+
     </div>
   );
 };

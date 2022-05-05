@@ -25,6 +25,7 @@ const remove = (photoId) => ({
   photoId,
 });
 
+
 export const getPhotos = () => async (dispatch) => {
   const response = await csrfFetch(`/api/photos`);
 //   console.log(response)
@@ -98,6 +99,7 @@ export const deletePhoto = (photoId) => async (dispatch) => {
 };
 
 
+
 const initialState = {
   // current: null,
   // order: {},
@@ -110,6 +112,9 @@ const photoReducer = (state = initialState, action) => {
       const allPhotos = {};
       // const order = {};
       action.photos.forEach((photo) => {
+          // photo.Comments.forEach(comment => {
+          //   photo.Comments[comment.id] = comment;
+          // })
           allPhotos[photo.id] = photo;
           // order[index] = photo;
       });
@@ -129,12 +134,6 @@ const photoReducer = (state = initialState, action) => {
       };
     }
 
-    // case LOAD_ONE_PHOTO: {
-    //   return {
-    //     ...state,
-    //     current: action.photo
-    //   }
-    // }
     case UPDATE: {
       // const index = state.order.findIndex(
       //   (photo) => photo.id === action.photo.id
@@ -148,23 +147,11 @@ const photoReducer = (state = initialState, action) => {
     }
     case REMOVE: {
       const newState = {...state};
-      // const index = state.order.findIndex(
-      //   (photo) => photo.id === action.photoId
-      // );
       delete newState[action.photoId];
-      // delete newState.order[action.photoId];
-
-      // for (const [key, value] of Object.entries(newState.order)) {
-      //   if (value.id === action.photoId) {
-      //     delete newState.order[key];
-      //   }
-      // }
-
-
-      // newState.order.splice(index, 1);
 
       return newState
     }
+
     default:
         return state;
   }

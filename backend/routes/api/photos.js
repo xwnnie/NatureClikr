@@ -8,25 +8,13 @@ const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 const router = express.Router();
 //routes for uploading, deleting photos, view single photos
 
-const { Photo, User, Fave } = require("../../db/models");
+const { Photo, User, Fave, Comment } = require("../../db/models");
 
 //get all photos
 router.get("/", asyncHandler(async (req, res) => {
     const photos = await Photo.findAll({ order: [["createdAt", "DESC"]], include: [User] });
     return res.json(photos);
 }))
-
-//get a single photo
-router.get(
-  "/:id(\\d+)",
-  asyncHandler(async (req, res) => {
-    const photoId = parseInt(req.params.id, 10);
-    const photo = await Photo.findByPk(photoId, {
-      include: [User, Fave],
-    });
-    return res.json(photo);
-  })
-);
 
 const validatePhoto = [
   check("name")
@@ -109,5 +97,52 @@ router.delete(
     return res.json(photo.id);
   })
 );
+
+
+//get comments of a photo
+router.get(
+  "/:id(\\d+)/comments",
+  asyncHandler(async (req, res) => {
+    const photoId = parseInt(req.params.id, 10);
+    const photo = await Photo.findByPk(photoId, {
+      include: [{model: Comment, include: User}],
+    });
+    return res.json(photo);
+  })
+);
+
+//post a comment to a photo
+const validateComment = [
+  check("content")
+    .exists({ checkFalsy: true })
+    .withMessage("Content cannot be empty.")
+    // .isLength({ max: 200 })
+    // .withMessage("Name cannot be more than 200 characters long"),
+];
+
+router.post(
+  "/:id(\\d+)/comments",
+  validateComment,
+  asyncHandler(async (req, res) => {
+    const { userId, photoId, content } = req.body;
+
+    const validatorErrors = validationResult(req);
+
+    const comment = await Comment.build({ userId, photoId, content });
+
+    if (validatorErrors.isEmpty()) {
+      await comment.save();
+      res.json(comment);
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.json({
+        message: "Failure",
+        errors,
+      });
+    }
+  })
+);
+
+
 
 module.exports = router;

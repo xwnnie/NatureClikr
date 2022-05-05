@@ -6,6 +6,7 @@ import { getPhotos } from "../../store/photos.js";
 import { getFaves, addFave, removeFave } from "../../store/faves.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
+import Comments from "../Comments/index.js";
 
 import "./PhotoDetail.css";
 
@@ -21,8 +22,8 @@ const PhotoDetail = () => {
   // console.log(photos)
 
   photos.sort((a, b) => {
-    const keyA = new Date(a.createdAt);
-    const keyB = new Date(b.createdAt);
+    const keyA = new Date(a?.createdAt);
+    const keyB = new Date(b?.createdAt);
     return keyA > keyB ? -1 : 1;
   });
   // const photos = useSelector((state) => state.photos.order);
@@ -58,7 +59,7 @@ const PhotoDetail = () => {
 
   let isFave = faves[photoId] ? true : false;
   const [fave, setFave] = useState(isFave);
-  console.log("isFave?", isFave)
+  // console.log("isFave?", isFave)
 
   const handleCheckboxChange = async (checked) => {
     if (checked) {
@@ -122,7 +123,7 @@ const PhotoDetail = () => {
           <p className="">Description: {photo?.description}</p>
         </div>
       </div>
-      {/* <Comment photo={photo} /> */}
+      <Comments />
     </div>
   );
 };

@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       hooks: true,
     });
+    Photo.hasMany(models.Comment, {
+      foreignKey: "photoId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
     // const columnMapping = {
     //   as: "photofaves",
     //   through: "Fave",

@@ -7,6 +7,7 @@ import { getFaves, addFave, removeFave } from "../../store/faves.js";
 
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
+import Comments from "../Comments/index.js";
 
 const MyPhotoDetail = () => {
   const history = useHistory();
@@ -118,7 +119,7 @@ const MyPhotoDetail = () => {
           <p className="">{photo?.description}</p>
         </div>
       </div>
-      {/* <Comment photo={photo} /> */}
+      <Comments />
     </div>
   );
 };

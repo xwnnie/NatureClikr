@@ -69,7 +69,7 @@ const Upload = ({showModal}) => {
           <label For="photo" id="select-photo-label">
             Select a Photo*
           </label>
-          <input type="file" name="photo" onChange={onPhotoChange} />
+          <input type="file" name="photo" onChange={onPhotoChange} required/>
         </div>
         <input
           type="text"

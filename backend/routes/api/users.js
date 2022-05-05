@@ -4,7 +4,7 @@ const { check } = require("express-validator");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { handleValidationErrors } = require("../../utils/validation");
-const { User, Photo, Fave } = require("../../db/models");
+const { User, Photo, Fave, Comment } = require("../../db/models");
 const { Router } = require("express");
 
 const router = express.Router();
@@ -85,7 +85,7 @@ router.get(
 
     const photos = await Photo.findAll({
       include: 
-        [{model: Fave, where: {faveUserId}}, User]
+        [{model: Fave, where: {faveUserId}}, User, Comment]
     });
 
     return res.json({

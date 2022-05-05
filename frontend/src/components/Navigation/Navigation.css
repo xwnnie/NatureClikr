@@ -121,6 +121,7 @@
     /* background-color: green; */
     /* transition: height 2s ease; */
     animation: fade 2s linear forwards;
+    background-color: white;
 }
 #dropdown-username {
     font-size: 14px;
@@ -131,6 +132,7 @@
     border: none;
     border-radius: 2px;
     background-color: rgb(250, 166, 8);
-    color: white
+    color: white;
+    padding: 5px 8px;
 }
 

@@ -15,15 +15,6 @@ const MyFaves = () => {
 
   let faves = useSelector((state) => state.faves);
   faves = Object.values(faves);
-  // console.log(photos)
-
-//   photos.sort((a, b) => {
-//     const keyA = new Date(a.createdAt);
-//     const keyB = new Date(b.createdAt);
-//     return keyA > keyB ? -1 : 1;
-//   });
-
-  // console.log(photos);
 
   const sessionUser = useSelector((state) => state.session.user);
 

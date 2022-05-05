@@ -15,8 +15,8 @@ const Explore = () => {
   // console.log(photos)
 
   photos.sort((a, b) => {
-    const keyA = new Date(a.createdAt);
-    const keyB = new Date(b.createdAt);
+    const keyA = new Date(a?.createdAt);
+    const keyB = new Date(b?.createdAt);
     return keyA > keyB ? -1 : 1;
   });
   // photos = photos.sort((a, b) => b.id - a.id);
@@ -35,15 +35,15 @@ const Explore = () => {
       <h1 style={{ paddingTop: "15px" }}>Explore photos</h1>
       <div className="masonry">
         {photos.map((photo) => (
-          <div className="masonry-item" key={photo.id}>
+          <div className="masonry-item" key={photo?.id}>
             <img
               onClick={() => {
                 redirectToPhoto(photo);
               }}
               // className="grid-image"
-              key={photo.id}
-              src={photo.url}
-              alt={photo.name}
+              key={photo?.id}
+              src={photo?.url}
+              alt={photo?.name}
             ></img>
           </div>
         ))}

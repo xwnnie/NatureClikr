@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos } from "../../store/photos";
+import { getComments } from "../../store/comments";
 import UserCard from "../UserCard";
 import MyPhotoEditModal from "../MyPhotoEditModal";
 import MyDeleteModal from "../MyDeleteModal";

@@ -68,6 +68,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       hooks: true
     });
+    User.hasMany(models.Comment, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
     // const columnMapping = {
     //     as: 'userfaves',
     //     through: 'Fave', 

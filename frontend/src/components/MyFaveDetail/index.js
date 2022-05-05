@@ -6,6 +6,7 @@ import { getFaves, addFave, removeFave } from "../../store/faves";
 // import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
+import Comments from "../Comments";
 
 const MyFaveDetail = () => {
   const history = useHistory();
@@ -45,7 +46,7 @@ const MyFaveDetail = () => {
 
     let isFave = faves[photoId] ? true : false;
     const [fave, setFave] = useState(isFave);
-    console.log("isFave?", isFave);
+    // console.log("isFave?", isFave);
 
     const handleCheckboxChange = async (checked) => {
     if (checked) {
@@ -105,7 +106,7 @@ const MyFaveDetail = () => {
           <p className="">{photo?.description}</p>
         </div>
       </div>
-      {/* <Comment photo={photo} /> */}
+      <Comments photo={photo}/>
     </div>
   );
 };

@@ -42,27 +42,33 @@ Logged in users can:
 - Add/View/Delete their Favorite photos
 - Search for Photos by name
 
-### Home Page
+### Splash Page
+<img width="1385" alt="splash-page" src="https://user-images.githubusercontent.com/50897748/167223325-37436956-9d43-495a-a844-6841879ed4f2.png">
 
+### Home Page
+<img width="1390" alt="homepage" src="https://user-images.githubusercontent.com/50897748/167223269-3b4c047f-473c-4568-8839-728c1764ef92.png">
 
 
 ### User Sign Up Page
 
+<img width="1386" alt="sign-up" src="https://user-images.githubusercontent.com/50897748/167223093-f0049dd2-fe4d-4199-8b72-954bed2fcbe5.png">
 
 
 ### Add Photo Page
-
+<img width="1381" alt="upload" src="https://user-images.githubusercontent.com/50897748/167223129-9ad933fc-f13f-454d-949e-aa16965bf659.png">
 
 
 ### Photo Detail Page
+<img width="1388" alt="photo-detail" src="https://user-images.githubusercontent.com/50897748/167223142-d2f7d62e-75e4-4d9e-a86a-605ad7cec9bd.png">
 
 
 
-### Favorites Page
-
+### User Personal Page
+<img width="1388" alt="personal-page" src="https://user-images.githubusercontent.com/50897748/167223162-10a50fd7-96d7-4cd2-9ea6-5c68616580f5.png">
 
 
 ### Search Results Page
+<img width="1390" alt="search-results" src="https://user-images.githubusercontent.com/50897748/167223174-3ae376b9-ab2f-4862-8369-794f28432cd2.png">
 
 
 
@@ -73,12 +79,9 @@ Logged in users can:
   - Logged-in users can create Albums.
   - Logged-in users can add Photos to their own Albums.
   - Logged-in users can delete their own Albums.
-- Comments:
-  - Logged-in users can create, edit and delete comments on photos.
 - Follows:
   - Logged-in users can follow and unfollow other users.
 - Google Maps:
   - Logged-in users can add address to their own Photos.
   - Address of photos will be visualized by Google Maps
 
-# Technical Implementation

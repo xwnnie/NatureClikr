@@ -28,7 +28,7 @@ const SearchResult = () => {
 
     return (
         <div className="main-container">
-            <h2>Search Results</h2>
+            <h2 id="search-h2">Search Results</h2>
             {results.map((photo) => (
             <div className="my-photo-container" key={photo.id}>
                 <img

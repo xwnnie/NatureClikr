@@ -24,7 +24,7 @@ const SearchResult = () => {
 
     const results = photos.filter(photo => photo.name.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 )
 
-    console.log(results)
+    // console.log(results)
 
     return (
         <div className="main-container">

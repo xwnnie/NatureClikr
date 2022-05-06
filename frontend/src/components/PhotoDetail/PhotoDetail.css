@@ -59,15 +59,15 @@
 
 .star {
     visibility: hidden;
-    font-size: 35px;
+    font-size: 30px;
     cursor: pointer;
 }
 
 .star:before {
     content: "\2606";
     position: absolute;
-    right: 5.5%;
-    top:  45px;
+    right: 9.5%;
+    top:  19.5px;
     visibility: visible;
     color: yellow;
     text-shadow: 0 0 7px #fff,
@@ -95,8 +95,8 @@
     color: white;
     font-size: 20px;
     position: absolute;
-    right: 5.5%;
-    top: 120px;
+    right: 15%;
+    top: 30px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -106,8 +106,8 @@
     color: white;
     font-size: 20px;
     position: absolute;
-    right: 5.5%;
-    top: 180px;
+    right: 20%;
+    top: 30px;
     border: none;
     background-color: transparent;
     cursor: pointer;

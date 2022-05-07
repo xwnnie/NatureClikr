@@ -4,8 +4,10 @@ NatureClikr is a website for users to upload and browse photos about nature. It 
 
 Try at the live site: [NatureClikr](https://nature-clikr.herokuapp.com/)
 
+## Techs/languages/APIs 
+JavaScript, Express, Postgres, Sequelize, HTML5, CSS, React, Redux, Pexel API
 
-# Getting started
+## Getting started
 
 1. Clone this repository
 
@@ -32,7 +34,7 @@ Try at the live site: [NatureClikr](https://nature-clikr.herokuapp.com/)
 
 
 
-### Features
+## Features
 
 NatureClikr is a website for users to upload and browse photos about nature. Logged in users can dynamically create, edit and delete photos, and add and remove favorite photos without redirecting.
 
@@ -40,6 +42,7 @@ Logged in users can:
 - View All Photos and photo details
 - Add/View/Edit/Delete their own Photos
 - Add/View/Delete their Favorite photos
+- Add/View/Delete their comments on photos
 - Search for Photos by name
 
 ### Splash Page
@@ -73,7 +76,7 @@ Logged in users can:
 
 
 
-# Future Features
+## Future Features
 
 - Albums:
   - Logged-in users can create Albums.

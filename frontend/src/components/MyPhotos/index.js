@@ -33,7 +33,7 @@ const MyPhotos = () => {
   return (
     <div className="main-container">
       <UserCard />
-      <h2>my photos</h2>
+      <h2 className="my-photos-h2">my photos</h2>
       <div className="my-photos-container">
         {myPhotos.map((photo) => (
           <div className="my-photo-container" key={photo.id}>

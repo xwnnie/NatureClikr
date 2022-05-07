@@ -3,6 +3,11 @@
     flex-wrap: wrap;
 }
 
+.my-photos-h2 {
+    width: fit-content;
+    margin: 30px auto 30px auto;
+}
+
 .my-photo-container {
     /* flex: 50%; */
     display: flex;

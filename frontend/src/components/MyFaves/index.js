@@ -22,7 +22,7 @@ const MyFaves = () => {
   return (
     <div className="main-container">
       <UserCard />
-      <h2>my faves</h2>
+      <h2 className="my-photos-h2">my faves</h2>
       <div className="my-photos-container">
         {faves.map((photo) => (
           <div className="my-photo-container" key={photo.id}>

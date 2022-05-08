@@ -22,7 +22,7 @@ const SearchResult = () => {
         return keyA > keyB ? -1 : 1;
     });
 
-    const results = photos.filter(photo => photo.name.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 )
+    const results = photos.filter(photo => photo?.name?.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 )
 
     return (
       <div className="main-container">

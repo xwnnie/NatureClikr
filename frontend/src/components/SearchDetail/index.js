@@ -13,22 +13,12 @@ import Comments from "../Comments/index.js";
 const SearchDetail = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-//   const navigate = useNavigate();
 
   const { photoId } = useParams();
-  const prevLink = window.location.pathname;
-  console.log(prevLink)
-
-//   let results = props.location.state.results;
 
   let photos = useSelector((state) => state.photos);
   photos = Object.values(photos);
 
-//   results.sort((a, b) => {
-//     const keyA = new Date(a?.createdAt);
-//     const keyB = new Date(b?.createdAt);
-//     return keyA > keyB ? -1 : 1;
-//   });
   const sessionUser = useSelector((state) => state.session.user);
   const photo = photos.find((photo) => photo.id === +photoId);
   let faves = useSelector((state) => state.faves);
@@ -40,8 +30,6 @@ const SearchDetail = () => {
   useEffect(() => {
     dispatch(getFaves(sessionUser.id));
   }, [dispatch]);
-
-//   const index = results.indexOf(photo);
 
   let date = new Date(photo?.createdAt);
   date = date.toDateString();

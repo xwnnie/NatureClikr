@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getFaves } from "../../store/faves";
 import UserCard from "../UserCard";
+import FaveStar from "../FaveStar";
 
 // import "./MyPhotos.css";
 
@@ -40,8 +41,9 @@ const MyFaves = () => {
             />
             <div className="edit-delete-modal-btn">
               <Link to={`/my/faves/${photo.id}`}>
-                <i className="fa-solid fa-comment" id="my-comment-link" />
+                <i className="fa-solid fa-comment" id="faves-comment-link" />
               </Link>
+              <FaveStar photoId={photo?.id}/>
             </div>
           </div>
         ))}

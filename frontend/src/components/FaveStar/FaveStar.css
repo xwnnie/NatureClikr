@@ -1,0 +1,14 @@
+#faves-page-star {
+    /* position: relative; */
+    /* position: absolute; */
+    /* top: 30px; */
+    padding-bottom: 15px;
+    margin-left: 90px;
+    font-size: 45px;
+}
+
+#faves-comment-link {
+    color: white;
+    font-size: 45px;
+    padding-top: 32px;
+}

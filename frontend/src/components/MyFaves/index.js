@@ -10,21 +10,24 @@ import FaveStar from "../FaveStar";
 
 const MyFaves = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFaves(sessionUser.id));
+  }, [dispatch]);
 
   let faves = useSelector((state) => state.faves);
   faves = Object.values(faves);
 
+  // console.log(faves)
+
   faves.sort((a, b) => {
-    const keyA = new Date(a?.Faves[0].createdAt);
-    const keyB = new Date(b?.Faves[0].createdAt);
-    return keyA > keyB ? -1 : 1;
+    if (a.Faves && b.Faves) {
+      const keyA = new Date(a?.Faves[0]?.createdAt);
+      const keyB = new Date(b?.Faves[0]?.createdAt);
+      return keyA > keyB ? -1 : 1;
+    }
   });
 
   const sessionUser = useSelector((state) => state.session.user);
-
-  useEffect(() => {
-    dispatch(getFaves(sessionUser.id));
-  }, [dispatch]);
 
   return (
     <div className="main-container">
@@ -32,7 +35,7 @@ const MyFaves = () => {
       <h2 className="my-photos-h2">my faves</h2>
       <div className="my-photos-container">
         {faves.map((photo) => (
-          <div className="my-photo-container" key={photo.id}>
+          <div className="my-photo-container" key={photo?.id}>
             <img
               key={photo?.id}
               src={photo?.url}

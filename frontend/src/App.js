@@ -12,6 +12,7 @@ import MyFaves from "./components/MyFaves";
 import MyFaveDetail from "./components/MyFaveDetail";
 import Footbar from "./components/Footbar";
 import SearchResult from "./components/SearchResult";
+import SearchDetail from "./components/SearchDetail";
 
 
 function App() {
@@ -48,8 +49,11 @@ function App() {
           <Route path="/photos/:photoId">
             <PhotoDetail />
           </Route>
-          <Route path="/search/:searchQuery">
+          <Route path="/search/:searchQuery" exact>
             <SearchResult />
+          </Route>
+          <Route path="/search/results/:photoId">
+            <SearchDetail />
           </Route>
         </Switch>
       )}

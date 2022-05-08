@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getPhotos } from "../../store/photos";
@@ -25,20 +25,31 @@ const SearchResult = () => {
     const results = photos.filter(photo => photo.name.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 )
 
     return (
-        <div className="main-container">
-            <h2 id="search-h2">Search Results</h2>
-            {results.map((photo) => (
-            <div className="my-photo-container" key={photo.id}>
-                <img
+      <div className="main-container">
+        <h2 id="search-h2">
+          Search Results for
+          <span> "{searchQuery}" </span>
+        </h2>
+        {results.map((photo) => (
+          <div className="my-photo-container search-result-container" key={photo.id}>
+            <Link
+              to={{
+                pathname: `/search/results/${photo?.id}`,
+                state: { results },
+              }}
+              className="search-result-link"
+            >
+              <img
                 key={photo?.id}
                 src={photo?.url}
                 alt={photo?.name}
                 className="my-img"
-                />
-            </div>
-            ))}            
-        </div>
-    )
+              />
+            </Link>
+          </div>
+        ))}
+      </div>
+    );
 }
 
 export default SearchResult

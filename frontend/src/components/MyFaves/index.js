@@ -14,8 +14,8 @@ const MyFaves = () => {
   faves = Object.values(faves);
 
   faves.sort((a, b) => {
-    const keyA = new Date(a?.createdAt);
-    const keyB = new Date(b?.createdAt);
+    const keyA = new Date(a?.Faves[0].createdAt);
+    const keyB = new Date(b?.Faves[0].createdAt);
     return keyA > keyB ? -1 : 1;
   });
 

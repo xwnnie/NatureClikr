@@ -20,6 +20,7 @@ function Navigation({ isLoaded }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     history.push(`/search/${searchQuery}`);
+    setSearchQuery("");
   }
 
   let sessionLinks;

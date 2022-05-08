@@ -2,3 +2,12 @@
     width: fit-content;
     margin: 80px auto 30px auto;
 }
+
+#search-h2 span {
+    color: rgb(250, 166, 8);
+}
+
+.search-result-link {
+    display: flex;
+    justify-content: center;
+}

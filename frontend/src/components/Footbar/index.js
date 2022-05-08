@@ -21,10 +21,18 @@ const Footbar = () => {
         <li>CSS</li>
       </ul>
       <div>Xiaowen Nie</div>
-      <a href="https://github.com/xwnnie/NatureClikr">
+      <a
+        href="https://github.com/xwnnie/NatureClikr"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
         <i className="fa-brands fa-github" />
       </a>
-      <a href="https://www.linkedin.com/in/xiaowennie">
+      <a
+        href="https://www.linkedin.com/in/xiaowennie"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
         <i className="fa-brands fa-linkedin" />
       </a>
     </nav>

@@ -30,24 +30,36 @@ const SearchResult = () => {
           Search Results for
           <span> "{searchQuery}" </span>
         </h2>
-        {results.map((photo) => (
-          <div className="my-photo-container search-result-container" key={photo.id}>
-            <Link
-              to={{
-                pathname: `/search/results/${photo?.id}`,
-                state: { results },
-              }}
-              className="search-result-link"
-            >
-              <img
-                key={photo?.id}
-                src={photo?.url}
-                alt={photo?.name}
-                className="my-img"
-              />
-            </Link>
+        {!results.length ? (
+          <div className="no-search-div">
+            <i className="fa-solid fa-otter" id="no-search-icon"></i>
+            <div id="no-search-msg">
+              "No results found. Try another search please."
+            </div>
           </div>
-        ))}
+        ) : (
+          results.map((photo) => (
+            <div
+              className="my-photo-container search-result-container"
+              key={photo.id}
+            >
+              <Link
+                to={{
+                  pathname: `/search/results/${photo?.id}`,
+                  state: { results },
+                }}
+                className="search-result-link"
+              >
+                <img
+                  key={photo?.id}
+                  src={photo?.url}
+                  alt={photo?.name}
+                  className="my-img"
+                />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     );
 }

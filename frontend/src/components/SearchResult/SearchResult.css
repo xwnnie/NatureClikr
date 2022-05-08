@@ -4,7 +4,7 @@
 }
 
 #search-h2 span {
-    color: rgb(250, 166, 8);
+    /* color: rgb(250, 166, 8); */
 }
 
 .search-result-link {
@@ -16,4 +16,23 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.no-search-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+#no-search-msg {
+    width: fit-content;
+    margin: auto;
+}
+
+#no-search-icon {
+    font-size: 50px;
+    color: rgba(139, 61, 5, 0.857);
+    margin-bottom: 10px;
 }

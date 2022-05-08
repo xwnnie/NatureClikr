@@ -16,6 +16,12 @@ const MyFaveDetail = () => {
   let faves = useSelector((state) => state.faves);
   const favePhotos = Object.values(faves);
 
+  favePhotos.sort((a, b) => {
+    const keyA = new Date(a?.createdAt);
+    const keyB = new Date(b?.createdAt);
+    return keyA > keyB ? -1 : 1;
+  });
+
   useEffect(() => {
     dispatch(getFaves(sessionUser.id));
   }, [dispatch]);

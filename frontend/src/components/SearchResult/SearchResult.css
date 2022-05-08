@@ -11,3 +11,9 @@
     display: flex;
     justify-content: center;
 }
+
+#search-goback {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

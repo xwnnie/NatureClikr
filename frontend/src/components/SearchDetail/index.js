@@ -12,6 +12,8 @@ import Comments from "../Comments/index.js";
 
 const SearchDetail = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+//   const navigate = useNavigate();
 
   const { photoId } = useParams();
   const prevLink = window.location.pathname;
@@ -70,10 +72,10 @@ const SearchDetail = () => {
   return (
     <div className="main-container ">
       <div className="photo-detail-card">
-        {/* <Link to={prevLink} className="back-link">
+        <button onClick={() => {history.goBack()}} className="back-link" id="search-goback">
           <i className="fa-solid fa-arrow-left" style={{ fontSize: "12px" }} />{" "}
           Back to Search Results
-        </Link> */}
+        </button>
         <input
           className="star"
           type="checkbox"

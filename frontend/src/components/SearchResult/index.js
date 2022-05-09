@@ -34,7 +34,7 @@ const SearchResult = () => {
           <div className="no-search-div">
             <i className="fa-solid fa-otter" id="no-search-icon"></i>
             <div id="no-search-msg">
-              "No results found. Try another search please."
+              "No results found, hah! Try another search please"
             </div>
           </div>
         ) : (

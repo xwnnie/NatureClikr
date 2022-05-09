@@ -3,9 +3,9 @@
     margin: 80px auto 30px auto;
 }
 
-#search-h2 span {
-    /* color: rgb(250, 166, 8); */
-}
+/* #search-h2 span {
+    color: rgb(250, 166, 8);
+} */
 
 .search-result-link {
     display: flex;
@@ -29,10 +29,11 @@
 #no-search-msg {
     width: fit-content;
     margin: auto;
+    color: rgba(139, 61, 5, 0.857)
 }
 
 #no-search-icon {
-    font-size: 50px;
+    font-size: 70px;
     color: rgba(139, 61, 5, 0.857);
     margin-bottom: 10px;
 }

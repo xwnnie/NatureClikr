@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getPhotos, deletePhoto } from "../../store/photos.js";
 import { getFaves, addFave, removeFave } from "../../store/faves.js";
-import EditPhotoModal from "../EditPhotoModal/index.js";
+
 import "./DeleteConfirm.css";
 
 const DeleteConfirm = ({ showModal }) => {

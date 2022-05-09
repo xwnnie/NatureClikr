@@ -12,46 +12,21 @@ const EditPhotoForm = ({ showModal }) => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-    const { photoId } = useParams();
+  const { photoId } = useParams();
+  let photos = useSelector((state) => state.photos);
+  photos = Object.values(photos);
+  const photo = photos.find((photo) => photo.id === +photoId);
 
-    // const photos = useSelector((state) => state.photos.order);
-    let photos = useSelector((state) => state.photos);
-    photos = Object.values(photos);
-    // console.log(photos)
-
-    photos.sort((a, b) => {
-      const keyA = new Date(a.createdAt);
-      const keyB = new Date(b.createdAt);
-      // console.log(keyA)
-      // console.log(keyB)
-      return keyA > keyB ? -1 : 1;
-    });
-    const photo = photos.find((photo) => photo.id === +photoId);
-
-  const [selectedPhoto, setSelectedPhoto] = useState(photo);
-  const [photoURL, setPhotoURL] = useState(photo.url);
   const [name, setName] = useState(photo.name);
   const [location, setLocation] = useState(photo.location);
   const [description, setDescription] = useState(photo.description);
-
-  useEffect(() => {
-    if (!selectedPhoto) return;
-    // setPhotoURL(URL.createObjectURL(selectedPhoto));
-  }, [selectedPhoto]);
-
-  const onPhotoChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      setSelectedPhoto(img);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
-        id: photoId,
-      url: photoURL,
+      id: photoId,
+      url: photo.url,
       name,
       location,
       description,
@@ -59,7 +34,7 @@ const EditPhotoForm = ({ showModal }) => {
     };
 
     let newPhoto = await dispatch(editPhoto(payload));
-    
+
     if (newPhoto) {
       history.push(`/photos/${newPhoto.id}`);
       showModal(false);

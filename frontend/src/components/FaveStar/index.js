@@ -8,11 +8,11 @@ import "./FaveStar.css";
 
 const FaveStar = ({ photoId }) => {
   const dispatch = useDispatch();
-  let photos = useSelector((state) => state.photos);
-  photos = Object.values(photos);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const photo = photos.find((photo) => photo.id === +photoId);
+//   let photos = useSelector((state) => state.photos);
+//   photos = Object.values(photos);
+//   const photo = photos.find((photo) => photo.id === +photoId);
 
   let faves = useSelector((state) => state.faves);
 

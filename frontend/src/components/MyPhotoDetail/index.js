@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPhotos } from "../../store/photos.js";

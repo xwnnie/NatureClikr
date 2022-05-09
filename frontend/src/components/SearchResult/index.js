@@ -1,12 +1,11 @@
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getPhotos } from "../../store/photos";
 
 import "./SearchResult.css";
 
 const SearchResult = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getPhotos());

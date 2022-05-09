@@ -9,19 +9,16 @@
 }
 
 .my-photo-container {
-    /* flex: 50%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
     position: relative;
-    /* width: 80%; */
 }
 .my-img {
     width: 50%;
     transition: 0.5s;
-    /* transition-duration: 2s; */
 }
 
 .edit-delete-modal-btn {
@@ -32,7 +29,6 @@
     opacity: 0;
     transition: 2s;
     transition: visibility 0s, opacity 0.5s linear;
-    /* transition-property: display; */
 }
 
 #my-edit-link, #my-delete-link, #my-comment-link {
@@ -42,7 +38,6 @@
     border: none;
     padding: 20px;
     cursor: pointer;
-    /* display: none; */
 }
 
 .edit-delete-modal-btn:hover + .my-img, .my-img:hover {

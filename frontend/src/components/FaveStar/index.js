@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getPhotos } from "../../store/photos.js";
 import { getFaves, addFave, removeFave } from "../../store/faves.js";
 
 import "./FaveStar.css";

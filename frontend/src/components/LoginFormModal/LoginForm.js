@@ -6,8 +6,6 @@ import { useDispatch } from "react-redux";
 import DemoUser from "../DemoUser";
 import "./LoginForm.css";
 
-// css: SignupForm.css
-
 function LoginForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");

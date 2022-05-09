@@ -20,7 +20,7 @@ const removeComment = (commentId) => ({
   commentId,
 });
 
-export const getComments = (photoId) => async (dispatch) => {
+export const getComments = () => async (dispatch) => {
   const response = await csrfFetch(`/api/comments`);
 
   if (response.ok) {

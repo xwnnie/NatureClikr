@@ -1,6 +1,5 @@
 .comments-container {
     margin-bottom: 100px;
-    /* padding-left: 40px; */
     margin-left: 18%;
 }
 .comments-container form {
@@ -26,7 +25,6 @@
 
 
 #add-comment-btn {
-    /* background-color: white; */
     background-color: rgb(250, 166, 8);
     color: white;
     border: none;

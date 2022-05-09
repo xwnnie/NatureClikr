@@ -114,7 +114,6 @@ const FaveStar = ({ photoId }) => {
   const faves = useSelector((state) => state.faves);
 
   const isFave = faves[photoId] ? true : false;
-  const [fave, setFave] = useState(isFave);
 
   useEffect(() => {
     dispatch(getFaves(sessionUser.id));
@@ -122,10 +121,8 @@ const FaveStar = ({ photoId }) => {
 
   const handleCheckboxChange = async (checked) => {
     if (checked) {
-      setFave(true);
       dispatch(addFave(sessionUser.id, photoId));
     } else {
-      setFave(false);
       dispatch(removeFave(sessionUser.id, photoId));
     }
   };

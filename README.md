@@ -36,9 +36,7 @@ JavaScript, Express, Postgres, Sequelize, HTML5, CSS, React, Redux, Pexel API
 
 ## Features
 
-NatureClikr is a website for users to upload and browse photos about nature. Logged in users can dynamically create, edit and delete photos, and add and remove favorite photos without redirecting.
-
-Logged in users can:
+NatureClikr is a website for users to upload and browse photos about nature. Logged in users can dynamically create, edit and delete photos, and add and remove favorite photos without redirecting. Logged in users can:
 - View All Photos and photo details
 - Add/View/Edit/Delete their own Photos
 - Add/View/Delete their Favorite photos
@@ -65,7 +63,6 @@ Logged in users can:
 <img width="1388" alt="photo-detail" src="https://user-images.githubusercontent.com/50897748/167223142-d2f7d62e-75e4-4d9e-a86a-605ad7cec9bd.png">
 
 
-
 ### User Personal Page
 <img width="1388" alt="personal-page" src="https://user-images.githubusercontent.com/50897748/167223162-10a50fd7-96d7-4cd2-9ea6-5c68616580f5.png">
 
@@ -74,6 +71,83 @@ Logged in users can:
 <img width="1390" alt="search-results" src="https://user-images.githubusercontent.com/50897748/167223174-3ae376b9-ab2f-4862-8369-794f28432cd2.png">
 
 
+## Technical Implementations
+
+1. The reducer to load, add and remove a fave from the fave state.
+```javascript
+const faveReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case LOAD: {
+        const allFavePhotos = {};
+        action.favePhotos.forEach((photo) => {
+          allFavePhotos[photo.id] = photo;
+        });
+        return {
+          ...state,
+          ...allFavePhotos,
+        };
+      }
+      case ADD: {
+          return {
+            ...state, 
+            [action.photo.id]: action.photo
+          }
+      }
+      case REMOVE: {
+          const newState = {...state}
+          delete newState[action.photoId]
+          return newState
+      }
+      default:
+        return state;
+    }
+}
+```
+
+2. The <FaveStar /> Component to dynamically add or remove a fave.
+```javascript
+
+const FaveStar = ({ photoId }) => {
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user);
+  const faves = useSelector((state) => state.faves);
+
+  const isFave = faves[photoId] ? true : false;
+  const [fave, setFave] = useState(isFave);
+
+  useEffect(() => {
+    dispatch(getPhotos());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getFaves(sessionUser.id));
+  }, [dispatch]);
+
+  const handleCheckboxChange = async (checked) => {
+    if (checked) {
+      setFave(true);
+      dispatch(addFave(sessionUser.id, photoId));
+    } else {
+      setFave(false);
+      dispatch(removeFave(sessionUser.id, photoId));
+    }
+  };
+
+  return (
+    <input
+      className="star"
+      id="faves-page-star"
+      type="checkbox"
+      name="addFave"
+      checked={isFave}
+      onChange={(e) => {
+        handleCheckboxChange(e.target.checked);
+      }}
+    />
+  );
+};
+```
 
 
 ## Future Features
@@ -87,4 +161,3 @@ Logged in users can:
 - Google Maps:
   - Logged-in users can add address to their own Photos.
   - Address of photos will be visualized by Google Maps
-

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -44,20 +44,16 @@ const MyFaveDetail = () => {
     );
   }
 
-    let isFave = faves[photoId] ? true : false;
-    const [fave, setFave] = useState(isFave);
+  let isFave = faves[photoId] ? true : false;
 
-    const handleCheckboxChange = async (checked) => {
+  const handleCheckboxChange = async (checked) => {
     if (checked) {
-        setFave(true);
-        dispatch(addFave(sessionUser.id, photoId));
+      dispatch(addFave(sessionUser.id, photoId));
     } else {
-        setFave(false);
-        dispatch(removeFave(sessionUser.id, photoId));
-        history.push("/my/faves");
+      dispatch(removeFave(sessionUser.id, photoId));
+      history.push("/my/faves");
     }
-    };
-
+  };
 
   return (
     <div className="main-container ">
@@ -105,7 +101,7 @@ const MyFaveDetail = () => {
           <p className="">{photo?.description}</p>
         </div>
       </div>
-      <Comments photo={photo}/>
+      <Comments photo={photo} />
     </div>
   );
 };

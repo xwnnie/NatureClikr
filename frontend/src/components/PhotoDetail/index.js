@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -53,14 +53,11 @@ const PhotoDetail = () => {
   }
 
   let isFave = faves[photoId] ? true : false;
-  const [fave, setFave] = useState(isFave);
 
   const handleCheckboxChange = async (checked) => {
     if (checked) {
-      setFave(true);  
       dispatch(addFave(sessionUser.id, photoId));    
     } else {
-      setFave(false);
       dispatch(removeFave(sessionUser.id, photoId)); 
     }
   }

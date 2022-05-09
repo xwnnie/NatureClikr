@@ -6,8 +6,6 @@ import { getFaves } from "../../store/faves";
 import UserCard from "../UserCard";
 import FaveStar from "../FaveStar";
 
-// import "./MyPhotos.css";
-
 const MyFaves = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,8 +14,6 @@ const MyFaves = () => {
 
   let faves = useSelector((state) => state.faves);
   faves = Object.values(faves);
-
-  // console.log(faves)
 
   faves.sort((a, b) => {
     if (a.Faves && b.Faves) {

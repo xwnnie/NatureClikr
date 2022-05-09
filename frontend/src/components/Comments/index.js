@@ -1,53 +1,44 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getPhotos } from "../../store/photos.js";
 import { addComment, getComments } from "../../store/comments.js";
 
 import DeleteCommentModal from "../DeleteCommentModal/index.js";
 
-import "./Comments.css"
+import "./Comments.css";
 
 const Comments = () => {
-    const [content, setContent] = useState("");
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getPhotos());
-    }, [dispatch]);
-    
-    const { photoId } = useParams();
-    useEffect(() => {
-        dispatch(getComments(photoId));
-    }, [dispatch]);
+  const [content, setContent] = useState("");
+  const dispatch = useDispatch();
 
-    let photos = useSelector((state) => state.photos);
-    photos = Object.values(photos);
+  const { photoId } = useParams();
+  useEffect(() => {
+    dispatch(getComments(photoId));
+  }, [dispatch]);
 
-    const sessionUser = useSelector((state) => state.session.user);
-    const photo = photos.find((photo) => photo.id === +photoId);
+  const sessionUser = useSelector((state) => state.session.user);
 
-    let comments = useSelector((state) => state.comments);
-    comments = Object.values(comments);
-    comments = comments.filter(comment => comment.photoId === +photoId);
-    comments.forEach(comment => {
-        const date = new Date(comment.createdAt);
-        comment.date = date.toDateString();
-    })
+  let comments = useSelector((state) => state.comments);
+  comments = Object.values(comments);
+  comments = comments.filter((comment) => comment.photoId === +photoId);
+  comments.forEach((comment) => {
+    const date = new Date(comment.createdAt);
+    comment.date = date.toDateString();
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        let newComment = await dispatch(
-            addComment({
-                photoId,
-                userId: sessionUser.id,
-                content
-            })
-        );
-        setContent("");
-    };
-
+    let newComment = await dispatch(
+      addComment({
+        photoId,
+        userId: sessionUser.id,
+        content,
+      })
+    );
+    setContent("");
+  };
 
   return (
     <div className="comments-container">

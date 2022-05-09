@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getPhotos } from "../../store/photos";
 
 import "./Explore.css";
@@ -11,7 +11,6 @@ const Explore = () => {
   
   let photos = useSelector((state) => state.photos);
   photos = Object.values(photos);
-  // console.log(photos)
 
   photos.sort((a, b) => {
     const keyA = new Date(a?.createdAt);

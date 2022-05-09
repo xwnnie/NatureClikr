@@ -12,20 +12,20 @@ import Comments from "../Comments/index.js";
 const MyPhotoDetail = () => {
   const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getPhotos());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getPhotos());
+  }, [dispatch]);
 
   const { photoId } = useParams();
 
-    let photos = useSelector((state) => state.photos);
-    photos = Object.values(photos);
+  let photos = useSelector((state) => state.photos);
+  photos = Object.values(photos);
 
-    photos.sort((a, b) => {
+  photos.sort((a, b) => {
     const keyA = new Date(a.createdAt);
     const keyB = new Date(b.createdAt);
     return keyA > keyB ? -1 : 1;
-    });
+  });
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -39,13 +39,12 @@ const MyPhotoDetail = () => {
   date = date.toDateString();
 
   let faves = useSelector((state) => state.faves);
-    useEffect(() => {
+  useEffect(() => {
     dispatch(getFaves(sessionUser.id));
-    }, [dispatch]);
+  }, [dispatch]);
 
-    let isFave = faves[photoId] ? true : false;
-    const [fave, setFave] = useState(isFave);
-    console.log("isFave?", isFave);
+  let isFave = faves[photoId] ? true : false;
+  const [fave, setFave] = useState(isFave);
 
   let editDeleteLinks;
   if (sessionUser.id === photo?.ownerId) {
@@ -66,7 +65,6 @@ const MyPhotoDetail = () => {
       dispatch(removeFave(sessionUser.id, photoId));
     }
   };
-  
 
   return (
     <div className="main-container ">

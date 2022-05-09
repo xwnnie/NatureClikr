@@ -1,48 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { editPhoto } from "../../store/photos";
 
-const MyPhotoEditForm = ({photoId}) => {
+const MyPhotoEditForm = ({ photoId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
 
-    let photos = useSelector((state) => state.photos);
-    photos = Object.values(photos);
-
-    photos.sort((a, b) => {
-      const keyA = new Date(a.createdAt);
-      const keyB = new Date(b.createdAt);
-      return keyA > keyB ? -1 : 1;
-    });
+  let photos = useSelector((state) => state.photos);
+  photos = Object.values(photos);
   const photo = photos.find((photo) => photo.id === +photoId);
 
-  const [selectedPhoto, setSelectedPhoto] = useState(photo);
-  const [photoURL, setPhotoURL] = useState(photo.url);
   const [name, setName] = useState(photo.name);
   const [location, setLocation] = useState(photo.location);
   const [description, setDescription] = useState(photo.description);
-
-  useEffect(() => {
-    if (!selectedPhoto) return;
-  }, [selectedPhoto]);
-
-  const onPhotoChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      setSelectedPhoto(img);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
       id: photoId,
-      url: photoURL,
+      url: photo.url,
       name,
       location,
       description,

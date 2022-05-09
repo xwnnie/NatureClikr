@@ -10,18 +10,10 @@ const FaveStar = ({ photoId }) => {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
-//   let photos = useSelector((state) => state.photos);
-//   photos = Object.values(photos);
-//   const photo = photos.find((photo) => photo.id === +photoId);
 
   let faves = useSelector((state) => state.faves);
-
   let isFave = faves[photoId] ? true : false;
   const [fave, setFave] = useState(isFave);
-
-  useEffect(() => {
-    dispatch(getPhotos());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getFaves(sessionUser.id));

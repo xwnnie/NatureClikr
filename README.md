@@ -117,10 +117,6 @@ const FaveStar = ({ photoId }) => {
   const [fave, setFave] = useState(isFave);
 
   useEffect(() => {
-    dispatch(getPhotos());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(getFaves(sessionUser.id));
   }, [dispatch]);
 

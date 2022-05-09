@@ -3,7 +3,6 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getFaves, addFave, removeFave } from "../../store/faves";
-// import { getPhotos, deletePhoto } from "../../store/photos.js";
 import EditPhotoModal from "../EditPhotoModal/index.js";
 import DeleteConfirmModal from "../DeleteConfirmModal/index.js";
 import Comments from "../Comments";

@@ -66,6 +66,13 @@ NatureClikr is a website for users to upload and browse photos about nature. Log
 ### User Personal Page
 <img width="1388" alt="personal-page" src="https://user-images.githubusercontent.com/50897748/167223162-10a50fd7-96d7-4cd2-9ea6-5c68616580f5.png">
 
+### My Photos Page
+<img width="1326" alt="my-photos" src="https://user-images.githubusercontent.com/50897748/168341585-86dd33d0-e602-4f15-9518-582ec5bb59fb.png">
+
+
+### My Faves Page
+<img width="1323" alt="my-faves" src="https://user-images.githubusercontent.com/50897748/168341419-aa4b0f53-582f-4a3f-ac91-80ee31623ece.png">
+
 
 ### Search Results Page
 <img width="1390" alt="search-results" src="https://user-images.githubusercontent.com/50897748/167223174-3ae376b9-ab2f-4862-8369-794f28432cd2.png">

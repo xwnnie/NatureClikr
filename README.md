@@ -5,7 +5,7 @@ NatureClikr is a website for users to upload and browse photos about nature. It 
 Try at the live site: [NatureClikr](https://nature-clikr.herokuapp.com/)
 
 ## Techs/languages/APIs 
-JavaScript, Express, Postgres, Sequelize, HTML5, CSS, React, Redux, Pexels API
+JavaScript, Express, Postgres, Sequelize, HTML5, CSS, React, Redux, AWS S3, Pexels API
 
 ## Getting started
 
